@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C00771AB1E41011300BB5D47 /* FinalRegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771AA1E41011300BB5D47 /* FinalRegisterTableViewController.swift */; };
+		C00771AD1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771AC1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift */; };
+		C00771B11E410D1800BB5D47 /* UIRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771B01E410D1800BB5D47 /* UIRegistration.swift */; };
 		C02169E31E3E2F6300BCA625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169E21E3E2F6300BCA625 /* AppDelegate.swift */; };
 		C02169EA1E3E2F6400BCA625 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02169E91E3E2F6400BCA625 /* Assets.xcassets */; };
 		C02169F51E3E33BE00BCA625 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F41E3E33BE00BCA625 /* CustomTabBarController.swift */; };
 		C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */; };
 		C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F81E3E377800BCA625 /* ContactTableViewController.swift */; };
 		C02169FB1E3E379800BCA625 /* UserDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169FA1E3E379800BCA625 /* UserDataTableViewController.swift */; };
-		C03D3F0F1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F0E1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift */; };
+		C03D3F0F1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */; };
+		C03D3F111E40E22E005F5E76 /* LandingPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */; };
 		C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C681E3E532200D41669 /* LoginTableViewController.swift */; };
-		C0A59C6B1E3E533700D41669 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6A1E3E533700D41669 /* RegisterTableViewController.swift */; };
 		C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */; };
 		C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */; };
 		D0B8B11D3239515818B82F8F /* Pods_Sangoo_01_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C60C44AA55374ED04D244AE /* Pods_Sangoo_01_01.framework */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		8C60C44AA55374ED04D244AE /* Pods_Sangoo_01_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sangoo_01_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00771AA1E41011300BB5D47 /* FinalRegisterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalRegisterTableViewController.swift; sourceTree = "<group>"; };
+		C00771AC1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
+		C00771B01E410D1800BB5D47 /* UIRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRegistration.swift; sourceTree = "<group>"; };
 		C02169DF1E3E2F6300BCA625 /* Sangoo_01_01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sangoo_01_01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02169E21E3E2F6300BCA625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C02169E91E3E2F6400BCA625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,10 +37,10 @@
 		C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
 		C02169F81E3E377800BCA625 /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		C02169FA1E3E379800BCA625 /* UserDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataTableViewController.swift; sourceTree = "<group>"; };
-		C03D3F0E1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLastNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
+		C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
+		C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageTableViewController.swift; sourceTree = "<group>"; };
 		C05AE9621E3E3CE90082DF35 /* Sangoo_01_01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sangoo_01_01.entitlements; sourceTree = "<group>"; };
 		C0A59C681E3E532200D41669 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
-		C0A59C6A1E3E533700D41669 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntranceNavigationController.swift; sourceTree = "<group>"; };
 		C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessengerClass.swift; sourceTree = "<group>"; };
 		C2A3942C8A70E9618D4275F9 /* Pods-Sangoo_01_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.debug.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +76,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C00771AF1E41062B00BB5D47 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */,
+				C00771AA1E41011300BB5D47 /* FinalRegisterTableViewController.swift */,
+				C00771AC1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
 		C02169D61E3E2F6300BCA625 = {
 			isa = PBXGroup;
 			children = (
@@ -98,9 +114,18 @@
 				C0A59C6E1E407E6300D41669 /* ViewController */,
 				C02169F41E3E33BE00BCA625 /* CustomTabBarController.swift */,
 				C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */,
-				C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */,
+				C03D3F141E40E746005F5E76 /* Helper */,
 			);
 			path = Sangoo_01_01;
+			sourceTree = "<group>";
+		};
+		C03D3F141E40E746005F5E76 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */,
+				C00771B01E410D1800BB5D47 /* UIRegistration.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		C0A59C6E1E407E6300D41669 /* ViewController */ = {
@@ -110,8 +135,8 @@
 				C02169F81E3E377800BCA625 /* ContactTableViewController.swift */,
 				C02169FA1E3E379800BCA625 /* UserDataTableViewController.swift */,
 				C0A59C681E3E532200D41669 /* LoginTableViewController.swift */,
-				C0A59C6A1E3E533700D41669 /* RegisterTableViewController.swift */,
-				C03D3F0E1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift */,
+				C00771AF1E41062B00BB5D47 /* Registration */,
+				C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -243,16 +268,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C03D3F0F1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift in Sources */,
+				C03D3F0F1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift in Sources */,
 				C02169FB1E3E379800BCA625 /* UserDataTableViewController.swift in Sources */,
 				C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */,
+				C00771AB1E41011300BB5D47 /* FinalRegisterTableViewController.swift in Sources */,
 				C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */,
-				C0A59C6B1E3E533700D41669 /* RegisterTableViewController.swift in Sources */,
 				C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */,
 				C02169F51E3E33BE00BCA625 /* CustomTabBarController.swift in Sources */,
 				C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */,
 				C02169E31E3E2F6300BCA625 /* AppDelegate.swift in Sources */,
+				C03D3F111E40E22E005F5E76 /* LandingPageTableViewController.swift in Sources */,
+				C00771B11E410D1800BB5D47 /* UIRegistration.swift in Sources */,
 				C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */,
+				C00771AD1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

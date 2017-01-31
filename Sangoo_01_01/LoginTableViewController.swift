@@ -130,7 +130,6 @@ class LoginTableViewController: UITableViewController {
     
     func registerButtonTapped(_ button: UIButton) {
         print("Register pressed 👍")
-        goToRegistrationView()
     }
     
     func doUserLogin() {
@@ -246,14 +245,6 @@ class LoginTableViewController: UITableViewController {
         let v = CustomTabBarController()
         
         navigationController?.pushViewController(v, animated: true)
-    }
-    
-    func goToRegistrationView() {
-        
-        let v = RegisterTableViewController()
-        
-        navigationController?.pushViewController(v, animated: true)
-        
     }
     
     // table view

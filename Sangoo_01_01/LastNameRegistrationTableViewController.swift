@@ -1,5 +1,5 @@
 //
-//  FirstLastNameRegistrationTableViewController.swift
+//  LastNameRegistrationTableViewController.swift
 //  Sangoo_01_01
 //
 //  Created by Florenz Erstling on 31.01.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstLastNameRegistrationTableViewController: UITableViewController {
+class LastNameRegistrationTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,14 +1,15 @@
 //
-//  LoginTableViewController.swift
+//  FinalRegisterTableViewController.swift
 //  Sangoo_01_01
 //
-//  Created by Florenz Erstling on 29.01.17.
+//  Created by Florenz Erstling on 31.01.17.
 //  Copyright © 2017 Florenz. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
 import SkyFloatingLabelTextField
+
 
 final class AuthDataList: Object {
     dynamic var id : Int = 0
@@ -30,8 +31,8 @@ final class AuthData: Object {
 }
 
 
-class RegisterTableViewController: UITableViewController {
-    
+class FinalRegisterTableViewController: UITableViewController {
+
     var authData = List<AuthData>()
     var notificationToken: NotificationToken!
     var realm: Realm!
@@ -97,7 +98,7 @@ class RegisterTableViewController: UITableViewController {
         
         repeatPassword.placeholder = "repeat Password"
         repeatPassword.title = "repeat Password"
-
+        
     }
     
     // MARK: - Table view data source
@@ -151,7 +152,7 @@ class RegisterTableViewController: UITableViewController {
         let filterString = "userName == '\(userName.text! as String)'"
         let user = realm.objects(AuthData.self).filter(filterString)
         //let user = realm.objects(AuthData.self).filter("userName == 'jo'")
-    
+        
         if (user.count == 0) {
             print("ok")
             return true
@@ -164,7 +165,7 @@ class RegisterTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell", for: indexPath)
         //disableSelection
         cell.selectionStyle = .none
-
+        
         
         if indexPath.row == 0 {
             cell.addSubview(userName)
@@ -251,7 +252,7 @@ class RegisterTableViewController: UITableViewController {
         navigationController?.pushViewController(v, animated: true)
         
     }
-
+    
     
     
     func goSegue() {
@@ -260,6 +261,5 @@ class RegisterTableViewController: UITableViewController {
         
         navigationController?.pushViewController(v, animated: true)
     }
-    
-    
+
 }
