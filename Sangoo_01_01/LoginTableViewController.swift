@@ -14,6 +14,8 @@ class LoginTableViewController: UITableViewController {
     
     var notificationToken: NotificationToken!
     var realm: Realm!
+    var authData = List<AuthData>()
+    var user = AuthData()
     
     var placeImageView = UIImageView(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:200))
     var blackImageView = UIImageView(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:200))
@@ -30,8 +32,12 @@ class LoginTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
         setupUI()
-        //setupRealm()
+        setupRealm()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,6 +45,24 @@ class LoginTableViewController: UITableViewController {
         if (isUserLoggedIn){
             print("Logged in")
             goSegue()
+        }
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
         }
     }
     
@@ -101,17 +125,142 @@ class LoginTableViewController: UITableViewController {
     
     func loginButtonTapped(_ button: UIButton) {
         print("Login pressed 👍")
+        doUserLogin()
     }
     
     func registerButtonTapped(_ button: UIButton) {
         print("Register pressed 👍")
         goToRegistrationView()
     }
+    
+    func doUserLogin() {
+        
+        let userExists = checkIfUserExists()
+        if (!userExists) {
+            Messenger().warning(messageText: "Benutzername oder Passwort falsch...")
+            return
+        }
+        let user = getUser()
+        let userPasswordCorrect = checkUserAuth(userWhoTriedLogin: user)
+        if (userPasswordCorrect) {
+            Messenger().success(messageText: "Du hast dich erfolgreich eingeloggt")
+        } else {
+            Messenger().warning(messageText: "Benutzername oder Passwort falsch...")
+        }
+
+    }
+    
+    func checkIfUserExists() -> Bool{
+        let filterString = "userName == '\(userName.text! as String)'"
+        print(filterString)
+        let user = realm.objects(AuthData.self).filter(filterString)
+        //let user = realm.objects(AuthData.self).filter("userName == 'jo'")
+        
+        if (user.count != 0) {
+            return true
+        }// => 0 because no dogs have been added to the Realm yet
+        
+        return false
+    }
+
+    func getUser() -> AuthData {
+        
+        let userName = self.userName.text! as String
+        
+        let filterString = "userName == '\(userName)'"
+        let receivedUser = realm.objects(AuthData.self).filter(filterString).first
+    
+    
+        return receivedUser!
+
+    }
+
+    func checkUserAuth(userWhoTriedLogin : AuthData) -> Bool {
+        
+        let userPassword = self.userPassword.text!
+        print(userPassword)
+        print(userWhoTriedLogin)
+        if (userWhoTriedLogin.userPassword == userPassword as String) {
+            return true
+        }
+        return false
+    }
+    
+    func checkIfFieldsLeftEmpty(){
+        
+    }
+    
+    
+    func setLocalCookie() -> Void {
+        
+        UserDefaults.standard.set(true,forKey:"isUserLoggedIn")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    func changeToProtectedView() {
+        //self.dismiss(animated: true, completion:nil)
+        self.performSegue(withIdentifier: "goToSecurePage", sender: self)
+        
+    }
+    
+    
+    func setupRealm() {
+        // Log in existing user with username and password
+        let username = "florenz.erstling@gmx.de"  // <--- Update this
+        let password = "23Safreiiy#"  // <--- Update this
+        
+        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://10.0.1.4:9080")!) { user, error in
+            guard let user = user else {
+                fatalError(String(describing: error))
+            }
+            
+            DispatchQueue.main.async {
+                // Open Realm
+                let configuration = Realm.Configuration(
+                    syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
+                )
+                self.realm = try! Realm(configuration: configuration)
+                
+                // Show initial tasks
+                func updateList() {
+                    if self.authData.realm == nil, let list = self.realm.objects(AuthDataList.self).first {
+                        self.authData = list.authDataItems
+                    }
+                    self.tableView.reloadData()
+                }
+                updateList()
+                
+                // Notify us when Realm changes
+                self.notificationToken = self.realm.addNotificationBlock { _ in
+                    updateList()
+                }
+                
+            }
+        }
+    }
 
     
+    func goSegue() {
+        
+        let v = CustomTabBarController()
+        
+        navigationController?.pushViewController(v, animated: true)
+    }
+    
+    func goToRegistrationView() {
+        
+        let v = RegisterTableViewController()
+        
+        navigationController?.pushViewController(v, animated: true)
+        
+    }
+    
+    // table view
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell", for: indexPath)
+        cell.selectionStyle = .none
         
         if indexPath.row == 0 {
             cell.addSubview(placeImageView)
@@ -136,65 +285,12 @@ class LoginTableViewController: UITableViewController {
         if indexPath.row == 0 {
             return 200
         } else if indexPath.row == 1 {
-            return 80
+            return 50
         } else {
-            return 80
+            return 50
         }
     }
 
-
-    
-    
-    func setLocalCookie() -> Void {
-        
-        UserDefaults.standard.set(true,forKey:"isUserLoggedIn")
-        UserDefaults.standard.synchronize()
-        
-    }
-    
-    func changeToProtectedView() {
-        //self.dismiss(animated: true, completion:nil)
-        self.performSegue(withIdentifier: "goToSecurePage", sender: self)
-        
-    }
-    
-    
-    func setupRealm() {
-        // Log in existing user with username and password
-        let username = "florenz.erstling@gmx.de"  // <--- Update this
-        let password = "23Safreiiy#"  // <--- Update this
-        
-        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://localhost:9080")!) { user, error in
-            guard let user = user else {
-                fatalError(String(describing: error))
-            }
-            
-            DispatchQueue.main.async {
-                // Open Realm
-                let configuration = Realm.Configuration(
-                    syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://localhost:9080/~/realmtasks")!)
-                )
-                self.realm = try! Realm(configuration: configuration)
-                
-                }
-        }
-    }
-
-    
-    func goSegue() {
-        
-        let v = CustomTabBarController()
-        
-        navigationController?.pushViewController(v, animated: true)
-    }
-    
-    func goToRegistrationView() {
-        
-        let v = RegisterTableViewController()
-        
-        navigationController?.pushViewController(v, animated: true)
-        
-    }
 
    
 }

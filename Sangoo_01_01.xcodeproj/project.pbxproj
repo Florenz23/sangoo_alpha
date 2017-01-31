@@ -13,9 +13,11 @@
 		C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */; };
 		C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F81E3E377800BCA625 /* ContactTableViewController.swift */; };
 		C02169FB1E3E379800BCA625 /* UserDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169FA1E3E379800BCA625 /* UserDataTableViewController.swift */; };
+		C03D3F0F1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F0E1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift */; };
 		C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C681E3E532200D41669 /* LoginTableViewController.swift */; };
 		C0A59C6B1E3E533700D41669 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6A1E3E533700D41669 /* RegisterTableViewController.swift */; };
 		C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */; };
+		C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */; };
 		D0B8B11D3239515818B82F8F /* Pods_Sangoo_01_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C60C44AA55374ED04D244AE /* Pods_Sangoo_01_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,10 +31,12 @@
 		C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
 		C02169F81E3E377800BCA625 /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		C02169FA1E3E379800BCA625 /* UserDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataTableViewController.swift; sourceTree = "<group>"; };
+		C03D3F0E1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLastNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C05AE9621E3E3CE90082DF35 /* Sangoo_01_01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sangoo_01_01.entitlements; sourceTree = "<group>"; };
 		C0A59C681E3E532200D41669 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		C0A59C6A1E3E533700D41669 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntranceNavigationController.swift; sourceTree = "<group>"; };
+		C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessengerClass.swift; sourceTree = "<group>"; };
 		C2A3942C8A70E9618D4275F9 /* Pods-Sangoo_01_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.debug.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.debug.xcconfig"; sourceTree = "<group>"; };
 		E3770501118B713A431347DF /* Pods-Sangoo_01_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.release.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,15 +95,25 @@
 				C02169E21E3E2F6300BCA625 /* AppDelegate.swift */,
 				C02169E91E3E2F6400BCA625 /* Assets.xcassets */,
 				C02169EE1E3E2F6400BCA625 /* Info.plist */,
+				C0A59C6E1E407E6300D41669 /* ViewController */,
+				C02169F41E3E33BE00BCA625 /* CustomTabBarController.swift */,
+				C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */,
+				C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */,
+			);
+			path = Sangoo_01_01;
+			sourceTree = "<group>";
+		};
+		C0A59C6E1E407E6300D41669 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
 				C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */,
 				C02169F81E3E377800BCA625 /* ContactTableViewController.swift */,
 				C02169FA1E3E379800BCA625 /* UserDataTableViewController.swift */,
-				C02169F41E3E33BE00BCA625 /* CustomTabBarController.swift */,
 				C0A59C681E3E532200D41669 /* LoginTableViewController.swift */,
 				C0A59C6A1E3E533700D41669 /* RegisterTableViewController.swift */,
-				C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */,
+				C03D3F0E1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift */,
 			);
-			path = Sangoo_01_01;
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C03D3F0F1E40DEC1005F5E76 /* FirstLastNameRegistrationTableViewController.swift in Sources */,
 				C02169FB1E3E379800BCA625 /* UserDataTableViewController.swift in Sources */,
+				C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */,
 				C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */,
 				C0A59C6B1E3E533700D41669 /* RegisterTableViewController.swift in Sources */,
 				C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */,
@@ -283,7 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -327,7 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -344,7 +360,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sangoo_01_01/Sangoo_01_01.entitlements;
 				DEVELOPMENT_TEAM = 76585C57A3;
 				INFOPLIST_FILE = Sangoo_01_01/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.florenzerstling.Sangoo-01-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -360,7 +376,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sangoo_01_01/Sangoo_01_01.entitlements;
 				DEVELOPMENT_TEAM = 76585C57A3;
 				INFOPLIST_FILE = Sangoo_01_01/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.florenzerstling.Sangoo-01-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";

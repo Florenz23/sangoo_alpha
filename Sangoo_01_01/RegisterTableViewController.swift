@@ -9,7 +9,15 @@
 import UIKit
 import RealmSwift
 import SkyFloatingLabelTextField
-import SwiftMessages
+
+final class AuthDataList: Object {
+    dynamic var id : Int = 0
+    let authDataItems = List<AuthData>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
 
 final class AuthData: Object {
     dynamic var userId =  NSUUID().uuidString
@@ -21,21 +29,10 @@ final class AuthData: Object {
     }
 }
 
-final class TaskList: Object {
-    dynamic var text = ""
-    dynamic var id = NSUUID().uuidString
-    dynamic var completed = false
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-
 
 class RegisterTableViewController: UITableViewController {
     
-    var userAuth = List<AuthData>()
+    var authData = List<AuthData>()
     var notificationToken: NotificationToken!
     var realm: Realm!
     
@@ -120,74 +117,39 @@ class RegisterTableViewController: UITableViewController {
     
     func registerButtonTapped(_ button: UIButton) {
         print("Register pressed 👍")
-        saveData()
         let userPassword = self.userPassword.text!
         let repeatPassword = self.repeatPassword.text!
         let userName = self.userName.text!
-        return
         if (userPassword != repeatPassword){
-            showMessage(text : "Die Passwörter stimmen nicht überein!")
+            Messenger().warning(messageText : "Die Passwörter stimmen nicht überein!")
             return
         }
-        
         if (userPassword == "" || userName == "" || repeatPassword == "") {
-            showMessage(text: "Da sein ein paar Felder leer geblieben!")
+            Messenger().warning(messageText : "Da sein ein paar Felder leer geblieben!")
             return
         }
-        
         if (checkUniqueUserName()){
             saveData()
         } else {
-            showMessage(text: "Deinen Benutzernamen gibt es schon!")
+            Messenger().warning(messageText : "Deinen Benutzernamen gibt es schon!")
         }
     }
     
-    func showMessage(text : String) {
-       
-        let view = MessageView.viewFromNib(layout: .CardView)
-        
-        // Theme message elements with the warning style.
-        view.configureTheme(.warning)
-        
-        // Add a drop shadow.
-        view.configureDropShadow()
-        
-        // Set message title, body, and icon. Here, we're overriding the default warning
-        // image with an emoji character.
-        view.configureContent(title: "Oops", body: text, iconText: "")
-        
-        // Show the message.
-        SwiftMessages.show(view: view)
-    }
-    
-    
     func saveData() {
-        saveDataCheck()
         print("save try")
-        let userAuth = self.userAuth
+        let authData = self.authData
         let auth = AuthData()
         auth.userName = userName.text!
         auth.userPassword = userPassword.text!
-        try! userAuth.realm?.write {
-            //userAuth.insert(AuthData(value: ["userId": NSUUID().uuidString, "userName": userName.text, "userPassword": userPassword.text]), at: 0)
-            userAuth.insert(AuthData(value: auth), at: 0)
-        }
-    }
-    
-    func saveDataCheck() {
-        print("moin")
-        let items = List<TaskList>()
-        var moin = TaskList()
-        moin.text = "ahah"
-        try! items.realm?.write {
-            items.insert(TaskList(value: moin), at: items.filter("completed = false").count)
+        try! authData.realm?.write {
+            //authData.insert(AuthData(value: ["userId": NSUUID().uuidString, "userName": userName.text, "userPassword": userPassword.text]), at: 0)
+            authData.insert(AuthData(value: auth), at: 0)
         }
     }
     
     func checkUniqueUserName() -> Bool {
-        
-        let user = realm.objects(AuthData.self).filter("userName == '\(userName.text)'")
-        print(user)
+        let filterString = "userName == '\(userName.text! as String)'"
+        let user = realm.objects(AuthData.self).filter(filterString)
         //let user = realm.objects(AuthData.self).filter("userName == 'jo'")
     
         if (user.count == 0) {
@@ -252,7 +214,7 @@ class RegisterTableViewController: UITableViewController {
         let username = "florenz.erstling@gmx.de"  // <--- Update this
         let password = "23Safreiiy#"  // <--- Update this
         
-        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://localhost:9080")!) { user, error in
+        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://10.0.1.4:9080")!) { user, error in
             guard let user = user else {
                 fatalError(String(describing: error))
             }
@@ -260,9 +222,23 @@ class RegisterTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 // Open Realm
                 let configuration = Realm.Configuration(
-                    syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://localhost:9080/~/realmtasks")!)
+                    syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
                 )
                 self.realm = try! Realm(configuration: configuration)
+                
+                // Show initial tasks
+                func updateList() {
+                    if self.authData.realm == nil, let list = self.realm.objects(AuthDataList.self).first {
+                        self.authData = list.authDataItems
+                    }
+                    self.tableView.reloadData()
+                }
+                updateList()
+                
+                // Notify us when Realm changes
+                self.notificationToken = self.realm.addNotificationBlock { _ in
+                    updateList()
+                }
                 
             }
         }
