@@ -16,6 +16,8 @@ class LandingPageTableViewController: UITableViewController {
     var blackImageView = UIImageView(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:UIScreen.main.bounds.height - 200))
     var placeNameLabel = UILabel(frame: CGRect(x:10,y:80,width:UIScreen.main.bounds.width - 20,height:40))
     var krakenImage = UIImageView(frame: CGRect(x:UIScreen.main.bounds.width / 2 - UIScreen.main.bounds.width / 3 / 2,y:80,width:UIScreen.main.bounds.width / 3 + 20,height:UIScreen.main.bounds.width / 3 + 30))
+    var krakenBackground = UIImageView(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:UIScreen.main.bounds.height-200))
+
     
     
     // Buttons
@@ -53,10 +55,18 @@ class LandingPageTableViewController: UITableViewController {
         placeImageView.contentMode = .scaleAspectFill
         placeImageView.clipsToBounds = true
         
+        //placeImageView.image = UIImage(named:"seattle")
+        krakenBackground.image = UIImage(named:"green")
+        //dont let is scratch
+        krakenBackground.contentMode = .scaleAspectFill
+        krakenBackground.clipsToBounds = true
+        
         //define a filter
         blackImageView.image = UIImage(named:"black")
         blackImageView.alpha = 0.8
         blackImageView.clipsToBounds = true
+        
+        
         
         placeNameLabel.text = "Sangoo"
         placeNameLabel.textAlignment = .center
@@ -138,7 +148,10 @@ class LandingPageTableViewController: UITableViewController {
         cell.selectionStyle = .none
         
         if indexPath.row == 0 {
+            cell.contentView.backgroundColor = UIColor(red:0.77, green:0.92, blue:0.83, alpha:1.0)
             cell.addSubview(krakenImage)
+            //cell.addSubview(krakenBackground)
+            //cell.bringSubview(toFront: krakenImage)
             //cell.addSubview(placeImageView)
             //cell.addSubview(blackImageView)
             //cell.addSubview(placeNameLabel)

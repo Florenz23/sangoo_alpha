@@ -1,15 +1,13 @@
 import UIKit
-import RealmSwift
-import SkyFloatingLabelTextField
-
-
 
 class FirstNameRegistrationTableViewController: UITableViewController {
     
     //textFields
     var textField = UIRegistration().iniTextField()
 
-    var loginButton = UIRegistration().iniButton()
+    var nextButton = UIRegistration().iniButton()
+    
+    var userData = UserData()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +17,7 @@ class FirstNameRegistrationTableViewController: UITableViewController {
     
     func setupUI() {
         // Do any additional setup after loading the view, typically from a nib.
-        title = "Registration"
+        title = ""
         
         
         tableView.delegate = self
@@ -29,10 +27,14 @@ class FirstNameRegistrationTableViewController: UITableViewController {
         // delete border
         tableView.separatorStyle = .none
         
-        textField = UIRegistration().setupTextField(textField: textField, description : "First Name")
+        let textFieldDescription = "Vorname"
+        let guardedData = userData.userFirstName
+        textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
 
         
-        loginButton = UIRegistration().setupButton(button: loginButton)
+        nextButton = UIRegistration().setupButton(button: nextButton)
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
+
         
     }
     
@@ -46,9 +48,16 @@ class FirstNameRegistrationTableViewController: UITableViewController {
         return 2
     }
     
-    func loginButtonTapped(_ button: UIButton) {
+    func nextButtonTapped(_ button: UIButton) {
         print("Weiter pressed 👍")
+        guardData()
         goToNextView()
+    }
+    
+    func guardData () {
+        
+        userData.userFirstName = textField.text!
+        
     }
     
     
@@ -62,7 +71,7 @@ class FirstNameRegistrationTableViewController: UITableViewController {
             cell.addSubview(textField)
         }
         else if indexPath.row == 1 {
-            cell.addSubview(loginButton)
+            cell.addSubview(nextButton)
         }
         
         return cell
@@ -81,8 +90,8 @@ class FirstNameRegistrationTableViewController: UITableViewController {
 
     func goToNextView() {
         
-        let v = LoginTableViewController()
-        
+        let v = LastNameRegistrationTableViewController()
+        v.userData = userData
         navigationController?.pushViewController(v, animated: true)
         
     }

@@ -28,6 +28,7 @@ class UIRegistration {
         button.backgroundColor = UIColor(red:0.2, green: 0.6, blue:1, alpha:1)
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 1
+
         
         return button
     }
@@ -39,11 +40,12 @@ class UIRegistration {
         
     }
     
-    func setupTextField(textField : SkyFloatingLabelTextField, description : String) -> SkyFloatingLabelTextField {
+    func setupTextField(textField : SkyFloatingLabelTextField, description : String, text : String) -> SkyFloatingLabelTextField {
         
         textField.placeholder = description
         textField.title = description
         textField.becomeFirstResponder()
+        textField.text = text
         
         return textField
     }

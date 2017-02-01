@@ -1,6 +1,6 @@
 import UIKit
 
-class LastNameRegistrationTableViewController: UITableViewController {
+class PhoneRegistrationTableViewController: UITableViewController {
     
     //textFields
     var textField = UIRegistration().iniTextField()
@@ -8,6 +8,7 @@ class LastNameRegistrationTableViewController: UITableViewController {
     var nextButton = UIRegistration().iniButton()
     
     var userData = UserData()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,8 @@ class LastNameRegistrationTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         
-        let textFieldDescription = "Nachname"
-        let guardedData = userData.userLastName
+        let textFieldDescription = "Telefonnummer"
+        let guardedData = userData.userPhone
         textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
         
         
@@ -38,8 +39,6 @@ class LastNameRegistrationTableViewController: UITableViewController {
         
         
     }
-    
-    
     
     // MARK: - Table view data source
     
@@ -59,9 +58,10 @@ class LastNameRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        userData.userLastName = textField.text!
+        userData.userPhone = textField.text!
         
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell", for: indexPath)
@@ -92,9 +92,9 @@ class LastNameRegistrationTableViewController: UITableViewController {
     
     func goToNextView() {
         
-        let v = EmailRegistrationTableViewController()
+        let v = UsernameRegistrationTableViewController()
         v.userData = userData
-        
+
         navigationController?.pushViewController(v, animated: true)
         
     }

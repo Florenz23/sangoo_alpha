@@ -10,27 +10,6 @@ import UIKit
 import RealmSwift
 import SkyFloatingLabelTextField
 
-
-final class AuthDataList: Object {
-    dynamic var id : Int = 0
-    let authDataItems = List<AuthData>()
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-final class AuthData: Object {
-    dynamic var userId =  NSUUID().uuidString
-    dynamic var userName = ""
-    dynamic var userPassword = ""
-    
-    override static func primaryKey() -> String? {
-        return "userId"
-    }
-}
-
-
 class FinalRegisterTableViewController: UITableViewController {
 
     var authData = List<AuthData>()
@@ -253,8 +232,7 @@ class FinalRegisterTableViewController: UITableViewController {
         
     }
     
-    
-    
+
     func goSegue() {
         
         let v = CustomTabBarController()

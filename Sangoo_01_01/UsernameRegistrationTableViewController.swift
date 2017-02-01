@@ -1,6 +1,7 @@
 import UIKit
+import RealmSwift
 
-class LastNameRegistrationTableViewController: UITableViewController {
+class UsernameRegistrationTableViewController: UITableViewController {
     
     //textFields
     var textField = UIRegistration().iniTextField()
@@ -8,10 +9,13 @@ class LastNameRegistrationTableViewController: UITableViewController {
     var nextButton = UIRegistration().iniButton()
     
     var userData = UserData()
+    var authData = AuthData()
+    var realm: Realm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupRealm()
     }
     
     
@@ -28,8 +32,8 @@ class LastNameRegistrationTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         
-        let textFieldDescription = "Nachname"
-        let guardedData = userData.userLastName
+        let textFieldDescription = "Nutzername"
+        let guardedData = authData.userName
         textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
         
         
@@ -39,7 +43,41 @@ class LastNameRegistrationTableViewController: UITableViewController {
         
     }
     
-    
+    func setupRealm() {
+        // Log in existing user with username and password
+        let username = "florenz.erstling@gmx.de"  // <--- Update this
+        let password = "23Safreiiy#"  // <--- Update this
+        
+        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://10.0.1.4:9080")!) { user, error in
+            guard let user = user else {
+                fatalError(String(describing: error))
+            }
+            
+            DispatchQueue.main.async {
+                // Open Realm
+                let configuration = Realm.Configuration(
+                    syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
+                )
+                self.realm = try! Realm(configuration: configuration)
+                
+                // Show initial tasks
+                func updateList() {
+                    if self.authData.realm == nil, let list = self.realm.objects(AuthDataList.self).first {
+                        self.authData = list.authDataItems
+                    }
+                    self.tableView.reloadData()
+                }
+                updateList()
+                
+                // Notify us when Realm changes
+                self.notificationToken = self.realm.addNotificationBlock { _ in
+                    updateList()
+                }
+                
+            }
+        }
+    }
+
     
     // MARK: - Table view data source
     
@@ -59,9 +97,10 @@ class LastNameRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        userData.userLastName = textField.text!
+        authData.userName = textField.text!
         
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell", for: indexPath)
@@ -92,9 +131,10 @@ class LastNameRegistrationTableViewController: UITableViewController {
     
     func goToNextView() {
         
-        let v = EmailRegistrationTableViewController()
+        let v = PasswordRegistrationTableViewController()
         v.userData = userData
-        
+        v.authData = authData
+
         navigationController?.pushViewController(v, animated: true)
         
     }

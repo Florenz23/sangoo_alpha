@@ -1,6 +1,8 @@
 import UIKit
+import RealmSwift
 
-class LastNameRegistrationTableViewController: UITableViewController {
+
+class PasswordRegistrationTableViewController: UITableViewController {
     
     //textFields
     var textField = UIRegistration().iniTextField()
@@ -8,10 +10,13 @@ class LastNameRegistrationTableViewController: UITableViewController {
     var nextButton = UIRegistration().iniButton()
     
     var userData = UserData()
+    var authData = AuthData()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
     }
     
     
@@ -28,9 +33,11 @@ class LastNameRegistrationTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         
-        let textFieldDescription = "Nachname"
-        let guardedData = userData.userLastName
+        let textFieldDescription = "Passwort"
+        let guardedData = authData.userPassword
         textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
+        textField.isSecureTextEntry = true
+
         
         
         nextButton = UIRegistration().setupButton(button: nextButton)
@@ -38,8 +45,6 @@ class LastNameRegistrationTableViewController: UITableViewController {
         
         
     }
-    
-    
     
     // MARK: - Table view data source
     
@@ -54,14 +59,16 @@ class LastNameRegistrationTableViewController: UITableViewController {
     func nextButtonTapped(_ button: UIButton) {
         print("Weiter pressed 👍")
         guardData()
-        goToNextView()
+        print(userData)
+        print(authData)
     }
     
     func guardData () {
         
-        userData.userLastName = textField.text!
+        authData.userPassword = textField.text!
         
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell", for: indexPath)
@@ -92,8 +99,7 @@ class LastNameRegistrationTableViewController: UITableViewController {
     
     func goToNextView() {
         
-        let v = EmailRegistrationTableViewController()
-        v.userData = userData
+        let v = LastNameRegistrationTableViewController()
         
         navigationController?.pushViewController(v, animated: true)
         
