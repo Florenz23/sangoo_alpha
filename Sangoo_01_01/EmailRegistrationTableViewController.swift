@@ -1,14 +1,13 @@
 import UIKit
+import SkyFloatingLabelTextField
 
-class EmailRegistrationTableViewController: UITableViewController {
+
+class EmailRegistrationTableViewController: UITableViewController, UITextFieldDelegate {
     
     //textFields
-    var textField = UIRegistration().iniTextField()
-    
-    var nextButton = UIRegistration().iniButton()
+    var uiFields = UIRegistration()
     
     var userData = UserData()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +27,12 @@ class EmailRegistrationTableViewController: UITableViewController {
         // delete border
         tableView.separatorStyle = .none
         
+        let textFieldDescription = "Vorname"
+        let guardedData = userData.userFirstName
+        uiFields.setupTextField(description: textFieldDescription, text: guardedData)
         
-        let textFieldDescription = "Email"
-        let guardedData = userData.userEmail
-        textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
-        
-        
-        nextButton = UIRegistration().setupButton(button: nextButton)
-        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
+        uiFields.setupButton()
+        uiFields.button.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
         
         
     }
@@ -58,7 +55,7 @@ class EmailRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        userData.userEmail = textField.text!
+        userData.userFirstName = uiFields.textField.text!
         
     }
     
@@ -70,10 +67,10 @@ class EmailRegistrationTableViewController: UITableViewController {
         
         
         if indexPath.row == 0 {
-            cell.addSubview(textField)
+            cell.addSubview(uiFields.textField)
         }
         else if indexPath.row == 1 {
-            cell.addSubview(nextButton)
+            cell.addSubview(uiFields.button)
         }
         
         return cell
@@ -88,6 +85,22 @@ class EmailRegistrationTableViewController: UITableViewController {
             return 50
         }
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+                if(text.characters.count < 3 || !(text.range(of :"@") != nil)) {
+                    floatingLabelTextField.errorMessage = "Invalid email"
+                }
+                else {
+                    // The error message will only disappear when we reset it to nil or empty string
+                    floatingLabelTextField.errorMessage = ""
+                }
+            }
+        }
+        return true
+    }
+
     
     
     func goToNextView() {

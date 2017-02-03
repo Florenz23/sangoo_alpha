@@ -11,43 +11,56 @@ import SkyFloatingLabelTextField
 
 class UIRegistration {
     
+    var button = UIButton(frame: CGRect(x:UIScreen.main.bounds.width / 2 - UIScreen.main.bounds.width * 0.75 / 2,y:10,width: UIScreen.main.bounds.width * 0.75,height:50))
+    var textField = SkyFloatingLabelTextField(frame: CGRect(x:UIScreen.main.bounds.width / 2 - UIScreen.main.bounds.width * 0.9 / 2,y:10,width:UIScreen.main.bounds.width * 0.9,height:45))
+
     
-    
-    func iniButton() -> UIButton {
-        
-        var button = UIButton(frame: CGRect(x:UIScreen.main.bounds.width / 2 - UIScreen.main.bounds.width * 0.75 / 2,y:10,width: UIScreen.main.bounds.width * 0.75,height:50))
-        
-        return button
-        
-    }
-    
-    func setupButton(button : UIButton) -> UIButton {
+    func setupButton()  {
         
         button.setTitle("Weiter", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = UIColor(red:0.2, green: 0.6, blue:1, alpha:1)
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 1
+        
+    }
+    
+    func disableButton()  {
+        
+        button.backgroundColor = UIColor(red:0.69, green:0.71, blue:0.70, alpha:1.0)
+        button.isEnabled = false
+        
+    }
+    
+    func enableButton() {
+        
+        button.backgroundColor = UIColor(red:0.2, green: 0.6, blue:1, alpha:1)
+        button.isEnabled = true
+        
+    }
 
-        
-        return button
-    }
     
-    func iniTextField() -> SkyFloatingLabelTextField {
-        
-        let textField = SkyFloatingLabelTextField(frame: CGRect(x:UIScreen.main.bounds.width / 2 - UIScreen.main.bounds.width * 0.9 / 2,y:10,width:UIScreen.main.bounds.width * 0.9,height:45))
-        return textField
-        
-    }
-    
-    func setupTextField(textField : SkyFloatingLabelTextField, description : String, text : String) -> SkyFloatingLabelTextField {
+    func setupTextField(description : String, text : String) {
         
         textField.placeholder = description
-        textField.title = description
         textField.becomeFirstResponder()
+        textField.title = description
         textField.text = text
         
-        return textField
+    }
+    
+    func disableTextField() {
+        
+        textField.isUserInteractionEnabled = false
+        
+    }
+    
+    func enableTextField() {
+        
+        print("jo")
+        textField.isUserInteractionEnabled = true
+        //textField.resignFirstResponder()
+        
     }
     
     func iniTableView(tableView : UITableView) -> UITableView{

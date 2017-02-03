@@ -1,16 +1,20 @@
 import UIKit
 import RealmSwift
+import SkyFloatingLabelTextField
 
-class UsernameRegistrationTableViewController: UITableViewController {
+
+class UsernameRegistrationTableViewController: UITableViewController, UITextFieldDelegate {
     
     //textFields
-    var textField = UIRegistration().iniTextField()
     
-    var nextButton = UIRegistration().iniButton()
+    var uiFields = UIRegistration()
     
     var userData = UserData()
     var authData = AuthData()
+    var authDataList = List<AuthData>()
     var realm: Realm!
+    var notificationToken: NotificationToken!
+    var loadingAnimation = LoadingAnimation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,20 +38,59 @@ class UsernameRegistrationTableViewController: UITableViewController {
         
         let textFieldDescription = "Nutzername"
         let guardedData = authData.userName
-        textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
+        uiFields.setupTextField(description : textFieldDescription, text : guardedData)
+        uiFields.textField.delegate = self
         
-        
-        nextButton = UIRegistration().setupButton(button: nextButton)
-        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
+        uiFields.setupButton()
+        uiFields.disableButton()
+        uiFields.button.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
         
         
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+                // nötig, damit die aktuellen Daten aus Texfeld benutzt werden
+                var txtAfterUpdate:NSString = text as String! as NSString
+                txtAfterUpdate = txtAfterUpdate.replacingCharacters(in: range, with: string) as NSString
+                print(txtAfterUpdate)
+                if(!checkUniqueUserName(text: txtAfterUpdate as String)) {
+                    floatingLabelTextField.errorMessage = "Benutzername leider schon vergeben..."
+                    uiFields.disableButton()
+                }
+                else {
+                    // The error message will only disappear when we reset it to nil or empty string
+                    floatingLabelTextField.errorMessage = ""
+                    self.uiFields.enableButton()
+                }
+            }
+        }
+        return true
+    }
+    
+    func checkUniqueUserName(text : String) -> Bool {
+        let filterString = "userName == '\(text as String)'"
+        print(filterString)
+        let user = realm.objects(AuthData.self).filter(filterString)
+        
+        if (user.count == 0) {
+            print("ok")
+            return true
+        }
+        
+        return false
+    }
+
+
     
     func setupRealm() {
         // Log in existing user with username and password
         let username = "florenz.erstling@gmx.de"  // <--- Update this
         let password = "23Safreiiy#"  // <--- Update this
-        
+        loadingAnimation.start()
+        uiFields.disableTextField()
+
         SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://10.0.1.4:9080")!) { user, error in
             guard let user = user else {
                 fatalError(String(describing: error))
@@ -63,7 +106,7 @@ class UsernameRegistrationTableViewController: UITableViewController {
                 // Show initial tasks
                 func updateList() {
                     if self.authData.realm == nil, let list = self.realm.objects(AuthDataList.self).first {
-                        self.authData = list.authDataItems
+                        self.authDataList = list.authDataItems
                     }
                     self.tableView.reloadData()
                 }
@@ -73,11 +116,13 @@ class UsernameRegistrationTableViewController: UITableViewController {
                 self.notificationToken = self.realm.addNotificationBlock { _ in
                     updateList()
                 }
-                
+                self.loadingAnimation.stop()
+                self.uiFields.enableTextField()
             }
         }
     }
-
+    
+    
     
     // MARK: - Table view data source
     
@@ -86,7 +131,7 @@ class UsernameRegistrationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func nextButtonTapped(_ button: UIButton) {
@@ -97,7 +142,7 @@ class UsernameRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        authData.userName = textField.text!
+        authData.userName = uiFields.textField.text!
         
     }
     
@@ -109,10 +154,14 @@ class UsernameRegistrationTableViewController: UITableViewController {
         
         
         if indexPath.row == 0 {
-            cell.addSubview(textField)
+            cell.addSubview(uiFields.textField)
         }
         else if indexPath.row == 1 {
-            cell.addSubview(nextButton)
+            cell.addSubview(uiFields.button)
+        }
+        else if indexPath.row == 2 {
+            cell.addSubview(loadingAnimation.animation)
+            //cell.textLabel?.text = "Moin"
         }
         
         return cell

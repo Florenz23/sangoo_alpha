@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         //window?.rootViewController = UINavigationController(rootViewController: ViewController(style: .plain))
         let nav1 = UINavigationController()
-        let mainView = LandingPageTableViewController(nibName: nil, bundle: nil) //ViewController = Name of your controller
+        let mainView = UsernameRegistrationTableViewController(nibName: nil, bundle: nil) //ViewController = Name of your controller
         nav1.viewControllers = [mainView]
         window?.rootViewController = nav1
         window?.makeKeyAndVisible()

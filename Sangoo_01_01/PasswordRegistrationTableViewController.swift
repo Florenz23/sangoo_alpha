@@ -5,9 +5,8 @@ import RealmSwift
 class PasswordRegistrationTableViewController: UITableViewController {
     
     //textFields
-    var textField = UIRegistration().iniTextField()
-    
-    var nextButton = UIRegistration().iniButton()
+    var uiFields = UIRegistration()
+
     
     var userData = UserData()
     var authData = AuthData()
@@ -33,19 +32,16 @@ class PasswordRegistrationTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         
-        let textFieldDescription = "Passwort"
-        let guardedData = authData.userPassword
-        textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
-        textField.isSecureTextEntry = true
+        let textFieldDescription = "Password"
+        let guardedData = authData.userName
+        uiFields.setupTextField(description : textFieldDescription, text : guardedData)
+        //uiFields.textField.delegate = self
+        uiFields.textField.isSecureTextEntry = true
 
         
-        
-        nextButton = UIRegistration().setupButton(button: nextButton)
-        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
-        
-        
+        uiFields.setupButton()
+        uiFields.button.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
     }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,7 +61,7 @@ class PasswordRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        authData.userPassword = textField.text!
+        authData.userPassword = uiFields.textField.text!
         
     }
     
@@ -77,10 +73,10 @@ class PasswordRegistrationTableViewController: UITableViewController {
         
         
         if indexPath.row == 0 {
-            cell.addSubview(textField)
+            cell.addSubview(uiFields.textField)
         }
         else if indexPath.row == 1 {
-            cell.addSubview(nextButton)
+            cell.addSubview(uiFields.button)
         }
         
         return cell

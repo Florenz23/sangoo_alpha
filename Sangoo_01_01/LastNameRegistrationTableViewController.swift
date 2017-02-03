@@ -3,9 +3,8 @@ import UIKit
 class LastNameRegistrationTableViewController: UITableViewController {
     
     //textFields
-    var textField = UIRegistration().iniTextField()
-    
-    var nextButton = UIRegistration().iniButton()
+    //textFields
+    var uiFields = UIRegistration()
     
     var userData = UserData()
     
@@ -27,19 +26,15 @@ class LastNameRegistrationTableViewController: UITableViewController {
         // delete border
         tableView.separatorStyle = .none
         
+        let textFieldDescription = "Vorname"
+        let guardedData = userData.userFirstName
+        uiFields.setupTextField(description: textFieldDescription, text: guardedData)
         
-        let textFieldDescription = "Nachname"
-        let guardedData = userData.userLastName
-        textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
-        
-        
-        nextButton = UIRegistration().setupButton(button: nextButton)
-        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
+        uiFields.setupButton()
+        uiFields.button.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
         
         
     }
-    
-    
     
     // MARK: - Table view data source
     
@@ -59,9 +54,10 @@ class LastNameRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        userData.userLastName = textField.text!
+        userData.userFirstName = uiFields.textField.text!
         
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell", for: indexPath)
@@ -70,10 +66,10 @@ class LastNameRegistrationTableViewController: UITableViewController {
         
         
         if indexPath.row == 0 {
-            cell.addSubview(textField)
+            cell.addSubview(uiFields.textField)
         }
         else if indexPath.row == 1 {
-            cell.addSubview(nextButton)
+            cell.addSubview(uiFields.button)
         }
         
         return cell
@@ -88,7 +84,6 @@ class LastNameRegistrationTableViewController: UITableViewController {
             return 50
         }
     }
-    
     
     func goToNextView() {
         

@@ -3,12 +3,9 @@ import UIKit
 class PhoneRegistrationTableViewController: UITableViewController {
     
     //textFields
-    var textField = UIRegistration().iniTextField()
-    
-    var nextButton = UIRegistration().iniButton()
+    var uiFields = UIRegistration()
     
     var userData = UserData()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +25,12 @@ class PhoneRegistrationTableViewController: UITableViewController {
         // delete border
         tableView.separatorStyle = .none
         
+        let textFieldDescription = "Vorname"
+        let guardedData = userData.userFirstName
+        uiFields.setupTextField(description: textFieldDescription, text: guardedData)
         
-        let textFieldDescription = "Telefonnummer"
-        let guardedData = userData.userPhone
-        textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
-        
-        
-        nextButton = UIRegistration().setupButton(button: nextButton)
-        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
+        uiFields.setupButton()
+        uiFields.button.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
         
         
     }
@@ -58,7 +53,7 @@ class PhoneRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        userData.userPhone = textField.text!
+        userData.userFirstName = uiFields.textField.text!
         
     }
     
@@ -70,10 +65,10 @@ class PhoneRegistrationTableViewController: UITableViewController {
         
         
         if indexPath.row == 0 {
-            cell.addSubview(textField)
+            cell.addSubview(uiFields.textField)
         }
         else if indexPath.row == 1 {
-            cell.addSubview(nextButton)
+            cell.addSubview(uiFields.button)
         }
         
         return cell

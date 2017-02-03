@@ -21,6 +21,7 @@
 		C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */; };
 		C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F81E3E377800BCA625 /* ContactTableViewController.swift */; };
 		C02169FB1E3E379800BCA625 /* UserDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169FA1E3E379800BCA625 /* UserDataTableViewController.swift */; };
+		C03300A61E44DE0000526F7E /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03300A51E44DE0000526F7E /* LoadingAnimation.swift */; };
 		C03D3F0F1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */; };
 		C03D3F111E40E22E005F5E76 /* LandingPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */; };
 		C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C681E3E532200D41669 /* LoginTableViewController.swift */; };
@@ -47,6 +48,7 @@
 		C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
 		C02169F81E3E377800BCA625 /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		C02169FA1E3E379800BCA625 /* UserDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataTableViewController.swift; sourceTree = "<group>"; };
+		C03300A51E44DE0000526F7E /* LoadingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageTableViewController.swift; sourceTree = "<group>"; };
 		C05AE9621E3E3CE90082DF35 /* Sangoo_01_01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sangoo_01_01.entitlements; sourceTree = "<group>"; };
@@ -137,8 +139,9 @@
 			isa = PBXGroup;
 			children = (
 				C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */,
-				C00771B01E410D1800BB5D47 /* UIRegistration.swift */,
 				C00F878D1E41F3C30082E28E /* DbClasses.swift */,
+				C00771B01E410D1800BB5D47 /* UIRegistration.swift */,
+				C03300A51E44DE0000526F7E /* LoadingAnimation.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				C00F878E1E41F3C30082E28E /* DbClasses.swift in Sources */,
 				C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */,
 				C00771AB1E41011300BB5D47 /* FinalRegisterTableViewController.swift in Sources */,
+				C03300A61E44DE0000526F7E /* LoadingAnimation.swift in Sources */,
 				C00F87881E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift in Sources */,
 				C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */,
 				C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */,

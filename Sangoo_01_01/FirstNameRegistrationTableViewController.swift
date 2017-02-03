@@ -3,9 +3,7 @@ import UIKit
 class FirstNameRegistrationTableViewController: UITableViewController {
     
     //textFields
-    var textField = UIRegistration().iniTextField()
-
-    var nextButton = UIRegistration().iniButton()
+    var uiFields = UIRegistration()
     
     var userData = UserData()
         
@@ -29,11 +27,10 @@ class FirstNameRegistrationTableViewController: UITableViewController {
         
         let textFieldDescription = "Vorname"
         let guardedData = userData.userFirstName
-        textField = UIRegistration().setupTextField(textField: textField, description : textFieldDescription, text : guardedData)
-
+        uiFields.setupTextField(description: textFieldDescription, text: guardedData)
         
-        nextButton = UIRegistration().setupButton(button: nextButton)
-        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
+        uiFields.setupButton()
+        uiFields.button.addTarget(self, action: #selector(nextButtonTapped), for: .touchDown)
 
         
     }
@@ -56,7 +53,7 @@ class FirstNameRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        userData.userFirstName = textField.text!
+        userData.userFirstName = uiFields.textField.text!
         
     }
     
@@ -68,10 +65,10 @@ class FirstNameRegistrationTableViewController: UITableViewController {
         
         
         if indexPath.row == 0 {
-            cell.addSubview(textField)
+            cell.addSubview(uiFields.textField)
         }
         else if indexPath.row == 1 {
-            cell.addSubview(nextButton)
+            cell.addSubview(uiFields.button)
         }
         
         return cell
