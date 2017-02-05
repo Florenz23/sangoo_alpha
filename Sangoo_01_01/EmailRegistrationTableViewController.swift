@@ -27,8 +27,8 @@ class EmailRegistrationTableViewController: UITableViewController, UITextFieldDe
         // delete border
         tableView.separatorStyle = .none
         
-        let textFieldDescription = "Vorname"
-        let guardedData = userData.userFirstName
+        let textFieldDescription = "Email"
+        let guardedData = userData.userEmail
         uiFields.setupTextField(description: textFieldDescription, text: guardedData)
         
         uiFields.setupButton()
@@ -55,7 +55,7 @@ class EmailRegistrationTableViewController: UITableViewController, UITextFieldDe
     
     func guardData () {
         
-        userData.userFirstName = uiFields.textField.text!
+        userData.userEmail = uiFields.textField.text!
         
     }
     

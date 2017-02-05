@@ -30,7 +30,7 @@ final class AuthData: Object {
 
 final class UserDataList: Object {
     dynamic var id : Int = 0
-    let authDataItems = List<UserData>()
+    let userDataItems = List<UserData>()
     
     override static func primaryKey() -> String? {
         return "id"

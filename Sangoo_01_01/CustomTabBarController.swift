@@ -16,13 +16,15 @@ class CustomTabBarController: UITabBarController {
         
         let connectController = ConnectTableViewController()
         let navController = ContactTableViewController()
-        let settingController = UserDataTableViewController()
+        let settingController = SettingsTableViewController()
         let connectNavController = createTabElement(controller: connectController, navTitle : "Connect", imageName: "connect")
         let contactNavController = createTabElement(controller: navController, navTitle : "Contacts", imageName: "contacts")
         let settingNavController = createTabElement(controller: settingController, navTitle : "Settings", imageName: "settings")
         
         
-        viewControllers = [connectNavController, contactNavController, settingNavController]
+        //viewControllers = [connectNavController, contactNavController, settingNavController]
+        //tabBarController?.viewControllers = [settingNavController,connectNavController, contactNavController]
+        viewControllers = [settingNavController,connectNavController, contactNavController]
         
         
         //setup login
@@ -30,31 +32,36 @@ class CustomTabBarController: UITabBarController {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
-        if (!isUserLoggedIn){
-            print("nicht Eingeloggt")
-            let loginView = LoginTableViewController()
-            let loginNavController = UINavigationController(rootViewController: loginView)
-            goSegue()
-        }
-    }
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        let userId = UserDefaults.standard.string(forKey: "isUserLoggedIn")
+//        print(userId)
+//        if (userId?.characters.count == 0){
+//            print("nicht Eingeloggtt")
+//            //let loginView = LoginTableViewController()
+//            //let loginNavController = UINavigationController(rootViewController: loginView)
+//            goBackToLandingPage()
+//        }
+//    }
+//    
     func createTabElement(controller: UITableViewController, navTitle : String, imageName: String) -> UINavigationController {
     
         let connectNavController = UINavigationController(rootViewController: controller)
-        connectNavController.tabBarItem.title = "Connect"
-        connectNavController.tabBarItem.image = UIImage(named:"connect")
+        connectNavController.tabBarItem.title = navTitle
+        connectNavController.tabBarItem.image = UIImage(named:imageName)
         
         return connectNavController
     
     }
     
-    func goSegue() {
+    func goBackToLandingPage(){
         
-        let v = LoginTableViewController()
+        print("goBack")
+
+        let v = LandingPageTableViewController()
         
+        self.navigationItem.setHidesBackButton(true, animated:true);
         navigationController?.pushViewController(v, animated: true)
+        
     }
 
     

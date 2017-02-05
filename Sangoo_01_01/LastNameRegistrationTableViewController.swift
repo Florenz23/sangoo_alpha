@@ -26,8 +26,8 @@ class LastNameRegistrationTableViewController: UITableViewController {
         // delete border
         tableView.separatorStyle = .none
         
-        let textFieldDescription = "Vorname"
-        let guardedData = userData.userFirstName
+        let textFieldDescription = "Nachname"
+        let guardedData = userData.userLastName
         uiFields.setupTextField(description: textFieldDescription, text: guardedData)
         
         uiFields.setupButton()
@@ -54,7 +54,7 @@ class LastNameRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        userData.userFirstName = uiFields.textField.text!
+        userData.userLastName = uiFields.textField.text!
         
     }
     

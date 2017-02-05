@@ -17,6 +17,8 @@ class LoginTableViewController: UITableViewController {
     var authData = List<AuthData>()
     var user = AuthData()
     
+    let cookie = LocalCookie()
+    
     var placeImageView = UIImageView(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:200))
     var blackImageView = UIImageView(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:200))
     var placeNameLabel = UILabel(frame: CGRect(x:10,y:80,width:UIScreen.main.bounds.width - 20,height:40))
@@ -41,11 +43,7 @@ class LoginTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
-        if (isUserLoggedIn){
-            print("Logged in")
-            goSegue()
-        }
+        
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -130,6 +128,7 @@ class LoginTableViewController: UITableViewController {
     
     func registerButtonTapped(_ button: UIButton) {
         print("Register pressed 👍")
+        goToRegistrationView()
     }
     
     func doUserLogin() {
@@ -142,11 +141,17 @@ class LoginTableViewController: UITableViewController {
         let user = getUser()
         let userPasswordCorrect = checkUserAuth(userWhoTriedLogin: user)
         if (userPasswordCorrect) {
-            Messenger().success(messageText: "Du hast dich erfolgreich eingeloggt")
+            doLogin(userWhoTriedLogin: user)
         } else {
             Messenger().warning(messageText: "Benutzername oder Passwort falsch...")
         }
 
+    }
+    
+    func doLogin(userWhoTriedLogin : AuthData) {
+        Messenger().success(messageText: "Du hast dich erfolgreich eingeloggt")
+        cookie.setLocalCookie(userId: user.userId)
+        goToMainView()
     }
     
     func checkIfUserExists() -> Bool{
@@ -240,7 +245,14 @@ class LoginTableViewController: UITableViewController {
     }
 
     
-    func goSegue() {
+    func goToRegistrationView() {
+        
+        let v = FirstNameRegistrationTableViewController()
+        
+        navigationController?.pushViewController(v, animated: true)
+    }
+    
+    func goToMainView() {
         
         let v = CustomTabBarController()
         

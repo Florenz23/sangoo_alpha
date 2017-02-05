@@ -25,8 +25,8 @@ class PhoneRegistrationTableViewController: UITableViewController {
         // delete border
         tableView.separatorStyle = .none
         
-        let textFieldDescription = "Vorname"
-        let guardedData = userData.userFirstName
+        let textFieldDescription = "Telefonnummer"
+        let guardedData = userData.userPhone
         uiFields.setupTextField(description: textFieldDescription, text: guardedData)
         
         uiFields.setupButton()
@@ -53,7 +53,7 @@ class PhoneRegistrationTableViewController: UITableViewController {
     
     func guardData () {
         
-        userData.userFirstName = uiFields.textField.text!
+        userData.userPhone = uiFields.textField.text!
         
     }
     
