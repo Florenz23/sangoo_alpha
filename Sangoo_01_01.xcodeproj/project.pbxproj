@@ -24,6 +24,8 @@
 		C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F81E3E377800BCA625 /* ContactTableViewController.swift */; };
 		C02169FB1E3E379800BCA625 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169FA1E3E379800BCA625 /* SettingsTableViewController.swift */; };
 		C03300A61E44DE0000526F7E /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03300A51E44DE0000526F7E /* LoadingAnimation.swift */; };
+		C034BE001E4876F500D7703D /* EditSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034BDFF1E4876F500D7703D /* EditSettingsTableViewController.swift */; };
+		C034BE031E487B8700D7703D /* EditUISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034BE021E487B8700D7703D /* EditUISettings.swift */; };
 		C03D3F0F1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */; };
 		C03D3F111E40E22E005F5E76 /* LandingPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */; };
 		C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C681E3E532200D41669 /* LoginTableViewController.swift */; };
@@ -53,6 +55,8 @@
 		C02169F81E3E377800BCA625 /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		C02169FA1E3E379800BCA625 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C03300A51E44DE0000526F7E /* LoadingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
+		C034BDFF1E4876F500D7703D /* EditSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSettingsTableViewController.swift; sourceTree = "<group>"; };
+		C034BE021E487B8700D7703D /* EditUISettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUISettings.swift; sourceTree = "<group>"; };
 		C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageTableViewController.swift; sourceTree = "<group>"; };
 		C05AE9621E3E3CE90082DF35 /* Sangoo_01_01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sangoo_01_01.entitlements; sourceTree = "<group>"; };
@@ -140,6 +144,15 @@
 			path = Sangoo_01_01;
 			sourceTree = "<group>";
 		};
+		C034BE011E48770800D7703D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C02169FA1E3E379800BCA625 /* SettingsTableViewController.swift */,
+				C034BDFF1E4876F500D7703D /* EditSettingsTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		C03D3F141E40E746005F5E76 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +161,7 @@
 				C00771B01E410D1800BB5D47 /* UIRegistration.swift */,
 				C03300A51E44DE0000526F7E /* LoadingAnimation.swift */,
 				C008DA8C1E4798C100D51D70 /* UISettings.swift */,
+				C034BE021E487B8700D7703D /* EditUISettings.swift */,
 				C008DA8E1E47A81600D51D70 /* LocalCookie.swift */,
 			);
 			name = Helper;
@@ -158,7 +172,7 @@
 			children = (
 				C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */,
 				C02169F81E3E377800BCA625 /* ContactTableViewController.swift */,
-				C02169FA1E3E379800BCA625 /* SettingsTableViewController.swift */,
+				C034BE011E48770800D7703D /* Settings */,
 				C00771AF1E41062B00BB5D47 /* Registration */,
 				C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */,
 			);
@@ -301,11 +315,13 @@
 				C00F87881E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift in Sources */,
 				C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */,
 				C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */,
+				C034BE031E487B8700D7703D /* EditUISettings.swift in Sources */,
 				C02169F51E3E33BE00BCA625 /* CustomTabBarController.swift in Sources */,
 				C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */,
 				C02169E31E3E2F6300BCA625 /* AppDelegate.swift in Sources */,
 				C03D3F111E40E22E005F5E76 /* LandingPageTableViewController.swift in Sources */,
 				C00F878C1E41F1FA0082E28E /* EmailRegistrationTableViewController.swift in Sources */,
+				C034BE001E4876F500D7703D /* EditSettingsTableViewController.swift in Sources */,
 				C008DA8D1E4798C100D51D70 /* UISettings.swift in Sources */,
 				C00771B11E410D1800BB5D47 /* UIRegistration.swift in Sources */,
 				C008DA8F1E47A81600D51D70 /* LocalCookie.swift in Sources */,
@@ -420,7 +436,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sangoo_01_01/Sangoo_01_01.entitlements;
 				DEVELOPMENT_TEAM = 76585C57A3;
 				INFOPLIST_FILE = Sangoo_01_01/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.florenzerstling.Sangoo-01-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -436,7 +452,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sangoo_01_01/Sangoo_01_01.entitlements;
 				DEVELOPMENT_TEAM = 76585C57A3;
 				INFOPLIST_FILE = Sangoo_01_01/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.florenzerstling.Sangoo-01-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";

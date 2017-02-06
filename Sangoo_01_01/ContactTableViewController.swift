@@ -29,7 +29,7 @@ class ContactTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let userId = UserDefaults.standard.string(forKey: "isUserLoggedIn")
-        print(userId)
+        print(userId!)
         if (userId?.characters.count == 0){
             print("nicht Eingeloggtt")
             //let loginView = LoginTableViewController()

@@ -157,6 +157,7 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
         
         let v = CustomTabBarController()
         
+        navigationController?.isNavigationBarHidden = true
         navigationController?.pushViewController(v, animated: true)
         
     }

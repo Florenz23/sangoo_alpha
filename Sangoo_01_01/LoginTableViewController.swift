@@ -150,7 +150,8 @@ class LoginTableViewController: UITableViewController {
     
     func doLogin(userWhoTriedLogin : AuthData) {
         Messenger().success(messageText: "Du hast dich erfolgreich eingeloggt")
-        cookie.setLocalCookie(userId: user.userId)
+        print(userWhoTriedLogin.userId)
+        cookie.setLocalCookie(userId: userWhoTriedLogin.userId)
         goToMainView()
     }
     
@@ -182,8 +183,6 @@ class LoginTableViewController: UITableViewController {
     func checkUserAuth(userWhoTriedLogin : AuthData) -> Bool {
         
         let userPassword = self.userPassword.text!
-        print(userPassword)
-        print(userWhoTriedLogin)
         if (userWhoTriedLogin.userPassword == userPassword as String) {
             return true
         }
@@ -239,6 +238,7 @@ class LoginTableViewController: UITableViewController {
                 self.notificationToken = self.realm.addNotificationBlock { _ in
                     updateList()
                 }
+                print("jojo2")
                 
             }
         }
@@ -256,7 +256,9 @@ class LoginTableViewController: UITableViewController {
         
         let v = CustomTabBarController()
         
+        navigationController?.isNavigationBarHidden = true
         navigationController?.pushViewController(v, animated: true)
+
     }
     
     // table view

@@ -12,17 +12,26 @@ import UIKit
 class LocalCookie {
     
     
+    let defaults = UserDefaults.standard
+
+    
     func setLocalCookie(userId : String) -> Void {
         
-        UserDefaults.standard.set(userId,forKey:"isUserLoggedIn")
-        UserDefaults.standard.synchronize()
+        defaults.set(userId, forKey: "userIdKey")
         
     }
     
     func removeCookie() -> Void {
        
-        UserDefaults.standard.set("",forKey:"isUserLoggedIn")
+        UserDefaults.standard.set("",forKey:"userIdKey")
         UserDefaults.standard.synchronize()
+        
+    }
+    
+    func getData() -> String {
+        
+        let userId = defaults.string(forKey: "userIdKey")
+        return userId!
         
     }
     
