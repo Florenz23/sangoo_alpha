@@ -37,6 +37,18 @@ final class UserDataList: Object {
     }
 }
 
+
+final class User: Object {
+    dynamic var userId = UUID().uuidString
+    dynamic var userData : UserData?
+    let userRelations = List<UserRelations>()
+    dynamic var userGeoData : UserGeoData?
+    
+    override static func primaryKey() -> String? {
+        return "userId"
+    }
+}
+
 final class UserData: Object {
     dynamic var userId = UUID().uuidString
     dynamic var userFirstName = ""
@@ -48,4 +60,54 @@ final class UserData: Object {
         return "userId"
     }
 }
+
+final class UserRelations: Object {
+    dynamic var id : Int = 0
+    let userRelationsContact = List<UserRelationsContact>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+final class UserRelationsContact: Object {
+    dynamic var id : Int = 0
+    dynamic var contactId = ""
+    let userRelationsContactSharedData = List<UserRelationsContactSharedData>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+final class UserRelationsContactSharedData: Object {
+    dynamic var id : Int = 0
+    dynamic var sharedDataKeys = 0
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+final class SharedDataKeys: Object {
+    dynamic var keyId : Int = 0
+    dynamic var keyDescription = ""
+    
+    override static func primaryKey() -> String? {
+        return "keyId"
+    }
+}
+
+
+final class UserGeoData: Object {
+    dynamic var id : Int = 0
+    dynamic var latitude = ""
+    dynamic var longitude = ""
+    dynamic var updateTime = NSDate()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
 

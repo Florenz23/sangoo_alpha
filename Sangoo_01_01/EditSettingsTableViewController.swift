@@ -24,6 +24,7 @@ class EditSettingsTableViewController: UITableViewController {
     
     
     var authData = AuthData()
+    var user = User()
     var userData = UserData()
     
     
@@ -47,6 +48,7 @@ class EditSettingsTableViewController: UITableViewController {
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveUserData))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         
         
         userName.setupTextField(description: "Benutzername", text: authData.userName)
@@ -163,8 +165,8 @@ class EditSettingsTableViewController: UITableViewController {
             // Show initial tasks
             let userId = self.cookie.getData()
             let searchString = "userId == '\(userId)'"
-            if self.userData.realm == nil, let list = self.realm.objects(UserData.self).filter(searchString).first {
-                self.userData = list
+            if self.userData.realm == nil, let list = self.realm.objects(User.self).filter(searchString).first {
+                self.userData = list.userData!
             }
             if self.authData.realm == nil, let list = self.realm.objects(AuthData.self).filter(searchString).first {
                 self.authData = list
@@ -172,10 +174,18 @@ class EditSettingsTableViewController: UITableViewController {
         }
     }
     
+    func cancel() {
+        
+        let v = SettingsTableViewController()
+        v.navigationItem.setHidesBackButton(true, animated:true)
+        navigationController?.pushViewController(v, animated: true)
+        
+    }
+    
     func goToSettings(){
         
         let v = SettingsTableViewController()
-        navigationController?.isNavigationBarHidden = true
+        v.navigationItem.setHidesBackButton(true, animated:true)
         navigationController?.pushViewController(v, animated: true)
         
     }

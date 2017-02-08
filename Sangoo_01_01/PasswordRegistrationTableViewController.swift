@@ -9,9 +9,9 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
     var uiFields = UIRegistration()
 
     
+    var user = User()
     var userData = UserData()
     var authData = AuthData()
-    var userDataList = UserDataList()
     
     var realm: Realm!
     var notificationToken: NotificationToken!
@@ -38,11 +38,11 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
     
     func saveData() {
         print("save try")
-        print(userData)
-        print(authData)
         
-        userData.userId = authData.userId
-        userDataList.userId = authData.userId
+        user.userId = authData.userId
+        user.userData = userData
+        
+        print(user)
         
         try! realm.write {
             //authData.insert(AuthData(value: ["userId": NSUUID().uuidString, "userName": userName.text, "userPassword": userPassword.text]), at: 0)
@@ -50,7 +50,7 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
         }
         try! realm.write {
             //authData.insert(AuthData(value: ["userId": NSUUID().uuidString, "userName": userName.text, "userPassword": userPassword.text]), at: 0)
-            realm.add(self.userData)
+            realm.add(self.user)
         }
     }
 
