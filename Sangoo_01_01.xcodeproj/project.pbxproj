@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0034FC41E49BA9400C5CEC3 /* DbConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0034FC31E49BA9400C5CEC3 /* DbConnector.swift */; };
+		C0034FC61E49D9A900C5CEC3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0034FC51E49D9A900C5CEC3 /* Constants.swift */; };
+		C0034FCC1E4A246D00C5CEC3 /* RealmSyncLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0034FCB1E4A246D00C5CEC3 /* RealmSyncLogin.storyboard */; };
+		C0034FD01E4A24DA00C5CEC3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0034FCF1E4A24DA00C5CEC3 /* LogInViewController.swift */; };
+		C0034FD31E4A7F3800C5CEC3 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0034FD21E4A7F3800C5CEC3 /* RealmHelper.swift */; };
 		C00771AB1E41011300BB5D47 /* FinalRegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771AA1E41011300BB5D47 /* FinalRegisterTableViewController.swift */; };
 		C00771AD1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771AC1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift */; };
 		C00771B11E410D1800BB5D47 /* UIRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771B01E410D1800BB5D47 /* UIRegistration.swift */; };
@@ -36,6 +41,11 @@
 
 /* Begin PBXFileReference section */
 		8C60C44AA55374ED04D244AE /* Pods_Sangoo_01_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sangoo_01_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0034FC31E49BA9400C5CEC3 /* DbConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbConnector.swift; sourceTree = "<group>"; };
+		C0034FC51E49D9A900C5CEC3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C0034FCB1E4A246D00C5CEC3 /* RealmSyncLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RealmSyncLogin.storyboard; sourceTree = "<group>"; };
+		C0034FCF1E4A24DA00C5CEC3 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		C0034FD21E4A7F3800C5CEC3 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		C00771AA1E41011300BB5D47 /* FinalRegisterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalRegisterTableViewController.swift; sourceTree = "<group>"; };
 		C00771AC1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C00771B01E410D1800BB5D47 /* UIRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRegistration.swift; sourceTree = "<group>"; };
@@ -96,6 +106,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C0034FCD1E4A247400C5CEC3 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C0034FCE1E4A248500C5CEC3 /* Assets */,
+				C0034FCF1E4A24DA00C5CEC3 /* LogInViewController.swift */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		C0034FCE1E4A248500C5CEC3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C0034FCB1E4A246D00C5CEC3 /* RealmSyncLogin.storyboard */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		C00771AF1E41062B00BB5D47 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +167,7 @@
 				C0A59C681E3E532200D41669 /* LoginTableViewController.swift */,
 				C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */,
 				C03D3F141E40E746005F5E76 /* Helper */,
+				C0034FCD1E4A247400C5CEC3 /* LoginViewController */,
 			);
 			path = Sangoo_01_01;
 			sourceTree = "<group>";
@@ -163,6 +191,9 @@
 				C008DA8C1E4798C100D51D70 /* UISettings.swift */,
 				C034BE021E487B8700D7703D /* EditUISettings.swift */,
 				C008DA8E1E47A81600D51D70 /* LocalCookie.swift */,
+				C0034FC51E49D9A900C5CEC3 /* Constants.swift */,
+				C0034FC31E49BA9400C5CEC3 /* DbConnector.swift */,
+				C0034FD21E4A7F3800C5CEC3 /* RealmHelper.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -248,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02169EA1E3E2F6400BCA625 /* Assets.xcassets in Resources */,
+				C0034FCC1E4A246D00C5CEC3 /* RealmSyncLogin.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,11 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0034FC61E49D9A900C5CEC3 /* Constants.swift in Sources */,
 				C03D3F0F1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift in Sources */,
 				C02169FB1E3E379800BCA625 /* SettingsTableViewController.swift in Sources */,
 				C00F878E1E41F3C30082E28E /* DbClasses.swift in Sources */,
 				C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */,
 				C00771AB1E41011300BB5D47 /* FinalRegisterTableViewController.swift in Sources */,
+				C0034FD01E4A24DA00C5CEC3 /* LogInViewController.swift in Sources */,
 				C03300A61E44DE0000526F7E /* LoadingAnimation.swift in Sources */,
 				C00F87881E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift in Sources */,
 				C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */,
@@ -326,7 +360,9 @@
 				C00771B11E410D1800BB5D47 /* UIRegistration.swift in Sources */,
 				C008DA8F1E47A81600D51D70 /* LocalCookie.swift in Sources */,
 				C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */,
+				C0034FD31E4A7F3800C5CEC3 /* RealmHelper.swift in Sources */,
 				C00F878A1E41EFFB0082E28E /* PasswordRegistrationTableViewController.swift in Sources */,
+				C0034FC41E49BA9400C5CEC3 /* DbConnector.swift in Sources */,
 				C00771AD1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift in Sources */,
 				C00F87861E41EFBA0082E28E /* PhoneRegistrationTableViewController.swift in Sources */,
 			);

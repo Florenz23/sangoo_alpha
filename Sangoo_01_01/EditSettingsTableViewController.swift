@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class EditSettingsTableViewController: UITableViewController {
     
@@ -15,6 +17,9 @@ class EditSettingsTableViewController: UITableViewController {
     var userLastName = EditUISettings()
     var userEmail = EditUISettings()
     var userPhone = EditUISettings()
+    
+    var realm: Realm!
+
     
     
     var authData = AuthData()
@@ -120,11 +125,34 @@ class EditSettingsTableViewController: UITableViewController {
     
     func saveUserData() {
         
-        print("Save")
-        let v = SettingsTableViewController()
-        navigationController?.pushViewController(v, animated: true)
-        v.authData = authData
-        v.userData = userData
+        DispatchQueue.main.async {
+            // Open Realm
+            let configuration = Realm.Configuration(
+                syncConfiguration: SyncConfiguration(user: SyncUser.current!, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
+            )
+            self.realm = try! Realm(configuration: configuration)
+            
+        }
+
+        guardData()
+        print("save")
+        print(userData)
+        DispatchQueue.main.async {
+            
+            try! self.userData.realm?.write {
+                self.realm.add(self.userData,update: true)
+            }
+        }
+
+    }
+    
+    func guardData() {
+        
+        userData.userFirstName = userFirstName.textField.text!
+        userData.userLastName = userLastName.textField.text!
+        userData.userEmail = userEmail.textField.text!
+        userData.userPhone = userPhone.textField.text!
+
         
     }
     
