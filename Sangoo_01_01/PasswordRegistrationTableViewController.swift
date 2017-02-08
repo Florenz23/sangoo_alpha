@@ -11,12 +11,13 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
     
     var userData = UserData()
     var authData = AuthData()
+    var userDataList = UserDataList()
     
     var realm: Realm!
     var notificationToken: NotificationToken!
     var loadingAnimation = LoadingAnimation()
-    var authDataList = List<AuthData>()
-    var userDataList = List<UserData>()
+    
+    var cookie = LocalCookie()
 
 
     override func viewDidLoad() {
@@ -41,63 +42,44 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
         print(authData)
         
         userData.userId = authData.userId
+        userDataList.userId = authData.userId
         
-        try! authDataList.realm?.write {
+        try! realm.write {
             //authData.insert(AuthData(value: ["userId": NSUUID().uuidString, "userName": userName.text, "userPassword": userPassword.text]), at: 0)
-            authDataList.insert(AuthData(value: authData), at: 0)
+            realm.add(self.authData)
         }
-        try! userDataList.realm?.write {
+        try! realm.write {
             //authData.insert(AuthData(value: ["userId": NSUUID().uuidString, "userName": userName.text, "userPassword": userPassword.text]), at: 0)
-            userDataList.insert(UserData(value: userData), at: 0)
+            realm.add(self.userData)
         }
     }
 
     
     func setupRealm() {
-        // Log in existing user with username and password
-        let username = "florenz.erstling@gmx.de"  // <--- Update this
-        let password = "23Safreiiy#"  // <--- Update this
-        loadingAnimation.start()
-        uiFields.disableTextField()
         
-        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://10.0.1.4:9080")!) { user, error in
-            guard let user = user else {
-                fatalError(String(describing: error))
-            }
-            
-            DispatchQueue.main.async {
-                // Open Realm
-                let configuration = Realm.Configuration(
-                    syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
-                )
-                self.realm = try! Realm(configuration: configuration)
-                
-                // Show initial tasks
-                func updateList() {
-                    if self.authData.realm == nil, let list = self.realm.objects(AuthDataList.self).first {
-                        self.authDataList = list.authDataItems
-                    }
-                    if self.userData.realm == nil, let list = self.realm.objects(UserDataList.self).first {
-                        self.userDataList = list.userDataItems
-                    }
-                    self.tableView.reloadData()
-                }
-                updateList()
-                
-                // Notify us when Realm changes
-                self.notificationToken = self.realm.addNotificationBlock { _ in
-                    updateList()
-                }
-                self.loadingAnimation.stop()
-                self.uiFields.enableTextField()
-            }
-        }
+        setRealm(user: SyncUser.current!)
+        //defineUpdateList()
+        
     }
+    
+    func setRealm(user : SyncUser) {
+        
+        DispatchQueue.main.async {
+            // Open Realm
+            let configuration = Realm.Configuration(
+                syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
+            )
+            self.realm = try! Realm(configuration: configuration)
+            
+        }
+        
+    }
+    
     
     func setLocalCookie() -> Void {
         
-        UserDefaults.standard.set(authData.userId,forKey:"isUserLoggedIn")
-        UserDefaults.standard.synchronize()
+        cookie.setLocalCookie(userId: authData.userId)
+        
         
     }
     

@@ -31,6 +31,10 @@ class LocalCookie {
     func getData() -> String {
         
         let userId = defaults.string(forKey: "userIdKey")
+        
+        if (userId == nil) {
+            return ""
+        }
         return userId!
         
     }

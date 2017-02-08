@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func logIn(animated: Bool = true) {
-        let username = "florenz.erstling@gmx.de"  // <--- Update this
-        let password = "23Safreiiy#"  // <--- Update this
+        let username = "test@gmx.de"  // <--- Update this
+        let password = "asdfasdf"  // <--- Update this
            // guard response.returnCode != .cancel, let username = response.username, let password = password else {
                 // FIXME: handle cancellation properly or just restrict it
            //     DispatchQueue.main.async {

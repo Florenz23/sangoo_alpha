@@ -29,11 +29,11 @@ final class AuthData: Object {
 }
 
 final class UserDataList: Object {
-    dynamic var id : Int = 0
+    dynamic var userId = UUID().uuidString
     let userDataItems = List<UserData>()
     
     override static func primaryKey() -> String? {
-        return "id"
+        return "userId"
     }
 }
 

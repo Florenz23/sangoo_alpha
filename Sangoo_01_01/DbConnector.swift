@@ -92,6 +92,28 @@ func authenticate(username: String, password: String, register: Bool, callback: 
     }
 }
 
+//func setupRealm1() {
+//    // Log in existing user with username and password
+//    let username = "test@gmx.de"  // <--- Update this
+//    let password = "asdfasdf"  // <--- Update this
+//    
+//    SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://10.0.1.4:9080")!) { user, error in
+//        guard let user = user else {
+//            fatalError(String(describing: error))
+//        }
+//        
+//        DispatchQueue.main.async {
+//            // Open Realma
+//            let configuration = Realm.Configuration(
+//                syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
+//            )
+//            self.realm = try! Realm(configuration: configuration)
+//            
+//        }
+//    }
+//}
+
+
 private extension NSError {
     
     convenience init(error: NSError, description: String?, recoverySuggestion: String?) {

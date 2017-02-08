@@ -19,6 +19,7 @@ class EditSettingsTableViewController: UITableViewController {
     var userPhone = EditUISettings()
     
     var realm: Realm!
+    var cookie = LocalCookie()
 
     
     
@@ -29,6 +30,7 @@ class EditSettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupRealm()
     }
     
     
@@ -48,6 +50,7 @@ class EditSettingsTableViewController: UITableViewController {
         
         
         userName.setupTextField(description: "Benutzername", text: authData.userName)
+        userName.disableTextField()
         
         
         
@@ -125,34 +128,69 @@ class EditSettingsTableViewController: UITableViewController {
     
     func saveUserData() {
         
+        print("save")
+        saveData()
+        goToSettings()
+        //print(userData)
+        //updateDataNow(userDataOld: userData)
+    }
+    
+    
+    func setupRealm() {
+        
+        setRealm(user: SyncUser.current!)
+        defineUpdateList()
+        
+    }
+    
+    func setRealm(user : SyncUser) {
+        
         DispatchQueue.main.async {
             // Open Realm
             let configuration = Realm.Configuration(
-                syncConfiguration: SyncConfiguration(user: SyncUser.current!, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
+                syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
             )
             self.realm = try! Realm(configuration: configuration)
             
         }
-
-        guardData()
-        print("save")
-        print(userData)
-        DispatchQueue.main.async {
-            
-            try! self.userData.realm?.write {
-                self.realm.add(self.userData,update: true)
-            }
-        }
-
+        
     }
     
-    func guardData() {
+    
+    func defineUpdateList() {
         
-        userData.userFirstName = userFirstName.textField.text!
-        userData.userLastName = userLastName.textField.text!
-        userData.userEmail = userEmail.textField.text!
-        userData.userPhone = userPhone.textField.text!
+        DispatchQueue.main.async {
+            // Show initial tasks
+            let userId = self.cookie.getData()
+            let searchString = "userId == '\(userId)'"
+            if self.userData.realm == nil, let list = self.realm.objects(UserData.self).filter(searchString).first {
+                self.userData = list
+            }
+            if self.authData.realm == nil, let list = self.realm.objects(AuthData.self).filter(searchString).first {
+                self.authData = list
+            }
+        }
+    }
+    
+    func goToSettings(){
+        
+        let v = SettingsTableViewController()
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.pushViewController(v, animated: true)
+        
+    }
 
+
+    
+    func saveData() {
+        
+        try! realm.write {
+            authData.userName = userName.textField.text!
+            userData.userFirstName = userFirstName.textField.text!
+            userData.userLastName = userLastName.textField.text!
+            userData.userEmail = userEmail.textField.text!
+            userData.userPhone = userPhone.textField.text!
+        }
         
     }
     
