@@ -9,15 +9,6 @@
 import RealmSwift
 
 
-final class AuthDataList: Object {
-    dynamic var id : Int = 0
-    let authDataItems = List<AuthData>()
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
 final class AuthData: Object {
     dynamic var userId =  NSUUID().uuidString
     dynamic var userName = ""
@@ -27,16 +18,6 @@ final class AuthData: Object {
         return "userId"
     }
 }
-
-final class UserDataList: Object {
-    dynamic var userId = UUID().uuidString
-    let userDataItems = List<UserData>()
-    
-    override static func primaryKey() -> String? {
-        return "userId"
-    }
-}
-
 
 final class User: Object {
     dynamic var userId = UUID().uuidString
@@ -63,7 +44,7 @@ final class UserData: Object {
 
 final class UserRelations: Object {
     dynamic var id : Int = 0
-    let userRelationsContact = List<UserRelationsContact>()
+    dynamic var userRelationsContact : UserRelationsContact?
     
     override static func primaryKey() -> String? {
         return "id"
@@ -72,7 +53,7 @@ final class UserRelations: Object {
 
 final class UserRelationsContact: Object {
     dynamic var id : Int = 0
-    dynamic var contactId = ""
+    dynamic var contactId : UserData?
     let userRelationsContactSharedData = List<UserRelationsContactSharedData>()
     
     override static func primaryKey() -> String? {
@@ -109,5 +90,26 @@ final class UserGeoData: Object {
         return "id"
     }
 }
+
+final class UserDataList: Object {
+    dynamic var userId = UUID().uuidString
+    let userDataItems = List<UserData>()
+    
+    override static func primaryKey() -> String? {
+        return "userId"
+    }
+}
+
+final class AuthDataList: Object {
+    dynamic var id : Int = 0
+    let authDataItems = List<AuthData>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+
+
 
 

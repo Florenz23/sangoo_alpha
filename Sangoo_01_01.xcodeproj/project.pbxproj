@@ -36,6 +36,7 @@
 		C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C681E3E532200D41669 /* LoginTableViewController.swift */; };
 		C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */; };
 		C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */; };
+		C0C8C76A1E4C4D5000B6BDD9 /* DetailContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C7691E4C4D5000B6BDD9 /* DetailContactTableViewController.swift */; };
 		D0B8B11D3239515818B82F8F /* Pods_Sangoo_01_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C60C44AA55374ED04D244AE /* Pods_Sangoo_01_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		C0A59C681E3E532200D41669 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntranceNavigationController.swift; sourceTree = "<group>"; };
 		C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessengerClass.swift; sourceTree = "<group>"; };
+		C0C8C7691E4C4D5000B6BDD9 /* DetailContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContactTableViewController.swift; sourceTree = "<group>"; };
 		C2A3942C8A70E9618D4275F9 /* Pods-Sangoo_01_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.debug.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.debug.xcconfig"; sourceTree = "<group>"; };
 		E3770501118B713A431347DF /* Pods-Sangoo_01_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.release.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,8 +177,8 @@
 		C034BE011E48770800D7703D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C02169FA1E3E379800BCA625 /* SettingsTableViewController.swift */,
 				C034BDFF1E4876F500D7703D /* EditSettingsTableViewController.swift */,
+				C02169FA1E3E379800BCA625 /* SettingsTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -202,12 +204,21 @@
 			isa = PBXGroup;
 			children = (
 				C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */,
-				C02169F81E3E377800BCA625 /* ContactTableViewController.swift */,
+				C0C8C7681E4C4CF800B6BDD9 /* Contacts */,
 				C034BE011E48770800D7703D /* Settings */,
 				C00771AF1E41062B00BB5D47 /* Registration */,
 				C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		C0C8C7681E4C4CF800B6BDD9 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				C0C8C7691E4C4D5000B6BDD9 /* DetailContactTableViewController.swift */,
+				C02169F81E3E377800BCA625 /* ContactTableViewController.swift */,
+			);
+			name = Contacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +372,7 @@
 				C008DA8F1E47A81600D51D70 /* LocalCookie.swift in Sources */,
 				C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */,
 				C0034FD31E4A7F3800C5CEC3 /* RealmHelper.swift in Sources */,
+				C0C8C76A1E4C4D5000B6BDD9 /* DetailContactTableViewController.swift in Sources */,
 				C00F878A1E41EFFB0082E28E /* PasswordRegistrationTableViewController.swift in Sources */,
 				C0034FC41E49BA9400C5CEC3 /* DbConnector.swift in Sources */,
 				C00771AD1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift in Sources */,
