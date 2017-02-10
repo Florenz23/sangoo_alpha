@@ -10,7 +10,7 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
 
     
     var user = User()
-    var userData = UserData()
+    var userData = RegistrationUserData()
     var authData = AuthData()
     
     var realm: Realm!
@@ -40,17 +40,29 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
         print("save try")
         
         user.userId = authData.userId
-        user.userData = userData
+        let userData1 = UserData()
+        userData1.descriptionGerman = "Vorname"
+        userData1.dataValue = userData.userFirstName
+        let userData2 = UserData()
+        userData2.descriptionGerman = "Nachname"
+        userData2.dataValue = userData.userLastName
+        let userData3 = UserData()
+        userData3.descriptionGerman = "Email"
+        userData3.dataValue = userData.userEmail
+        let userData4 = UserData()
+        userData4.descriptionGerman = "Telefonnummer"
+        userData4.dataValue = userData.userPhone
         
         print(user)
         
         try! realm.write {
             //authData.insert(AuthData(value: ["userId": NSUUID().uuidString, "userName": userName.text, "userPassword": userPassword.text]), at: 0)
             realm.add(self.authData)
-        }
-        try! realm.write {
-            //authData.insert(AuthData(value: ["userId": NSUUID().uuidString, "userName": userName.text, "userPassword": userPassword.text]), at: 0)
-            realm.add(self.user)
+            realm.add(userData1)
+            realm.add(userData2)
+            realm.add(userData3)
+            realm.add(userData4)
+
         }
     }
 

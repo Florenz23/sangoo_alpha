@@ -12,7 +12,6 @@
 		C0034FCC1E4A246D00C5CEC3 /* RealmSyncLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0034FCB1E4A246D00C5CEC3 /* RealmSyncLogin.storyboard */; };
 		C0034FD01E4A24DA00C5CEC3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0034FCF1E4A24DA00C5CEC3 /* LogInViewController.swift */; };
 		C0034FD31E4A7F3800C5CEC3 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0034FD21E4A7F3800C5CEC3 /* RealmHelper.swift */; };
-		C00771AB1E41011300BB5D47 /* FinalRegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771AA1E41011300BB5D47 /* FinalRegisterTableViewController.swift */; };
 		C00771AD1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771AC1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift */; };
 		C00771B11E410D1800BB5D47 /* UIRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771B01E410D1800BB5D47 /* UIRegistration.swift */; };
 		C008DA8D1E4798C100D51D70 /* UISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C008DA8C1E4798C100D51D70 /* UISettings.swift */; };
@@ -37,6 +36,8 @@
 		C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */; };
 		C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */; };
 		C0C8C76A1E4C4D5000B6BDD9 /* DetailContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C7691E4C4D5000B6BDD9 /* DetailContactTableViewController.swift */; };
+		C0C8C76C1E4C760700B6BDD9 /* DummyDbContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */; };
+		C0C8C76E1E4CBC3400B6BDD9 /* RegistrationUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */; };
 		D0B8B11D3239515818B82F8F /* Pods_Sangoo_01_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C60C44AA55374ED04D244AE /* Pods_Sangoo_01_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +48,6 @@
 		C0034FCB1E4A246D00C5CEC3 /* RealmSyncLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RealmSyncLogin.storyboard; sourceTree = "<group>"; };
 		C0034FCF1E4A24DA00C5CEC3 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C0034FD21E4A7F3800C5CEC3 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
-		C00771AA1E41011300BB5D47 /* FinalRegisterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalRegisterTableViewController.swift; sourceTree = "<group>"; };
 		C00771AC1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C00771B01E410D1800BB5D47 /* UIRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRegistration.swift; sourceTree = "<group>"; };
 		C008DA8C1E4798C100D51D70 /* UISettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISettings.swift; sourceTree = "<group>"; };
@@ -75,6 +75,8 @@
 		C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntranceNavigationController.swift; sourceTree = "<group>"; };
 		C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessengerClass.swift; sourceTree = "<group>"; };
 		C0C8C7691E4C4D5000B6BDD9 /* DetailContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContactTableViewController.swift; sourceTree = "<group>"; };
+		C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDbContent.swift; sourceTree = "<group>"; };
+		C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationUserData.swift; sourceTree = "<group>"; };
 		C2A3942C8A70E9618D4275F9 /* Pods-Sangoo_01_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.debug.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.debug.xcconfig"; sourceTree = "<group>"; };
 		E3770501118B713A431347DF /* Pods-Sangoo_01_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.release.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,7 +136,6 @@
 				C00F87851E41EFBA0082E28E /* PhoneRegistrationTableViewController.swift */,
 				C00F87871E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift */,
 				C00F87891E41EFFB0082E28E /* PasswordRegistrationTableViewController.swift */,
-				C00771AA1E41011300BB5D47 /* FinalRegisterTableViewController.swift */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -196,6 +197,8 @@
 				C0034FC51E49D9A900C5CEC3 /* Constants.swift */,
 				C0034FC31E49BA9400C5CEC3 /* DbConnector.swift */,
 				C0034FD21E4A7F3800C5CEC3 /* RealmHelper.swift */,
+				C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */,
+				C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -354,7 +357,6 @@
 				C02169FB1E3E379800BCA625 /* SettingsTableViewController.swift in Sources */,
 				C00F878E1E41F3C30082E28E /* DbClasses.swift in Sources */,
 				C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */,
-				C00771AB1E41011300BB5D47 /* FinalRegisterTableViewController.swift in Sources */,
 				C0034FD01E4A24DA00C5CEC3 /* LogInViewController.swift in Sources */,
 				C03300A61E44DE0000526F7E /* LoadingAnimation.swift in Sources */,
 				C00F87881E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift in Sources */,
@@ -374,9 +376,11 @@
 				C0034FD31E4A7F3800C5CEC3 /* RealmHelper.swift in Sources */,
 				C0C8C76A1E4C4D5000B6BDD9 /* DetailContactTableViewController.swift in Sources */,
 				C00F878A1E41EFFB0082E28E /* PasswordRegistrationTableViewController.swift in Sources */,
+				C0C8C76E1E4CBC3400B6BDD9 /* RegistrationUserData.swift in Sources */,
 				C0034FC41E49BA9400C5CEC3 /* DbConnector.swift in Sources */,
 				C00771AD1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift in Sources */,
 				C00F87861E41EFBA0082E28E /* PhoneRegistrationTableViewController.swift in Sources */,
+				C0C8C76C1E4C760700B6BDD9 /* DummyDbContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

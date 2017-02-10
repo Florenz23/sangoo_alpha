@@ -9,7 +9,7 @@ class UsernameRegistrationTableViewController: UITableViewController, UITextFiel
     
     var uiFields = UIRegistration()
     
-    var userData = UserData()
+    var userData = RegistrationUserData()
     var authData = AuthData()
     var authDataList = List<AuthData>()
     var realm: Realm!

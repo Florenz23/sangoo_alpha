@@ -57,8 +57,8 @@ class ConnectTableViewController: UITableViewController {
         
         DispatchQueue.main.async {
             // Show initial tasks
-            if self.items.realm == nil, let list = self.realm.objects(UserDataList.self).first {
-                self.items = list.userDataItems
+            if self.items.realm == nil, let list = self.realm.objects(User.self).first {
+                self.items = list.userData
             }
             self.tableView.reloadData()
         }
@@ -78,7 +78,7 @@ class ConnectTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let item = items[indexPath.row]
-        cell.textLabel?.text = item.userFirstName
+        cell.textLabel?.text = item.descriptionGerman
         return cell
     }
     

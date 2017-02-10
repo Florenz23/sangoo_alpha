@@ -207,48 +207,9 @@ class LoginTableViewController: UITableViewController {
         
     }
     
-    
-    func setupRealm1() {
-        // Log in existing user with username and password
-        let username = "florenz.erstling@gmx.de"  // <--- Update this
-        let password = "23Safreiiy#"  // <--- Update this
-        
-        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://10.0.1.4:9080")!) { user, error in
-            guard let user = user else {
-                fatalError(String(describing: error))
-            }
-            
-            DispatchQueue.main.async {
-                // Open Realm
-                let configuration = Realm.Configuration(
-                    syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
-                )
-                self.realm = try! Realm(configuration: configuration)
-                
-                // Show initial tasks
-                func updateList() {
-                    if self.authData.realm == nil, let list = self.realm.objects(AuthDataList.self).first {
-                        self.authData = list.authDataItems
-                    }
-                    self.tableView.reloadData()
-                }
-                updateList()
-                
-                // Notify us when Realm changes
-                self.notificationToken = self.realm.addNotificationBlock { _ in
-                    updateList()
-                }
-                print("jojo2")
-                
-            }
-        }
-    }
-    
-    
     func setupRealm() {
         
         setRealm(user: SyncUser.current!)
-        setupSync()
         
     }
 
@@ -262,28 +223,6 @@ class LoginTableViewController: UITableViewController {
             
         }
     }
-    
-    func setupSync() {
-        
-        DispatchQueue.main.async {
-            // Show initial tasks
-            func updateList() {
-                if self.authData.realm == nil, let list = self.realm.objects(AuthDataList.self).first {
-                    self.authData = list.authDataItems
-                }
-                self.tableView.reloadData()
-            }
-            updateList()
-            
-            // Notify us when Realm changes
-            self.notificationToken = self.realm.addNotificationBlock { _ in
-                updateList()
-            }
-        }
-        
-    }
-
-
     
     func goToRegistrationView() {
         

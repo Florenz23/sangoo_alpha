@@ -13,10 +13,7 @@ import RealmSwift
 class EditSettingsTableViewController: UITableViewController {
     
     var userName = EditUISettings()
-    var userFirstName = EditUISettings()
-    var userLastName = EditUISettings()
-    var userEmail = EditUISettings()
-    var userPhone = EditUISettings()
+    var textField = EditUISettings()
     
     var realm: Realm!
     var cookie = LocalCookie()
@@ -25,7 +22,7 @@ class EditSettingsTableViewController: UITableViewController {
     
     var authData = AuthData()
     var user = User()
-    var userData = UserData()
+    var userData = List<UserData>()
     
     
     override func viewDidLoad() {
@@ -56,21 +53,6 @@ class EditSettingsTableViewController: UITableViewController {
         
         
         
-        userFirstName.setupTextField(description: "Vorname", text: userData.userFirstName)
-        
-        
-        userLastName.setupTextField(description: "Nachname", text: userData.userLastName)
-        
-        
-        userEmail.setupTextField(description: "Email", text: userData.userEmail)
-        
-        
-        userPhone.setupTextField(description: "Telefon", text: userData.userPhone)
-        
-        
-        
-        
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,23 +71,10 @@ class EditSettingsTableViewController: UITableViewController {
         
         //disableSelection
         
-        if indexPath.row == 0 {
-            cell.addSubview(userName.textField)
-        }
-        else if indexPath.row == 1 {
-            cell.addSubview(userFirstName.textField)
-        }
-        else if indexPath.row == 2 {
-            cell.addSubview(userLastName.textField)
-        }
-        else if indexPath.row == 3 {
-            cell.addSubview(userEmail.textField)
-        }
-        else if indexPath.row == 4 {
-            cell.addSubview(userPhone.textField)
-        }
-            
-        else if indexPath.row == 5 {
+        let data = userData[indexPath.row]
+        self.textField.setupTextField(description: data.descriptionGerman, text: data.dataValue)
+        cell.addSubview(textField.textField)
+        if indexPath.row == 5 {
            
         }
         
@@ -166,7 +135,7 @@ class EditSettingsTableViewController: UITableViewController {
             let userId = self.cookie.getData()
             let searchString = "userId == '\(userId)'"
             if self.userData.realm == nil, let list = self.realm.objects(User.self).filter(searchString).first {
-                self.userData = list.userData!
+                self.userData = list.userData
             }
             if self.authData.realm == nil, let list = self.realm.objects(AuthData.self).filter(searchString).first {
                 self.authData = list
@@ -195,11 +164,11 @@ class EditSettingsTableViewController: UITableViewController {
     func saveData() {
         
         try! realm.write {
-            authData.userName = userName.textField.text!
-            userData.userFirstName = userFirstName.textField.text!
-            userData.userLastName = userLastName.textField.text!
-            userData.userEmail = userEmail.textField.text!
-            userData.userPhone = userPhone.textField.text!
+//            authData.userName = userName.textField.text!
+//            userData.userFirstName = userFirstName.textField.text!
+//            userData.userLastName = userLastName.textField.text!
+//            userData.userEmail = userEmail.textField.text!
+//            userData.userPhone = userPhone.textField.text!
         }
         
     }

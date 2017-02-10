@@ -6,7 +6,7 @@ class LastNameRegistrationTableViewController: UITableViewController {
     //textFields
     var uiFields = UIRegistration()
     
-    var userData = UserData()
+    var userData = RegistrationUserData()
     
     override func viewDidLoad() {
         super.viewDidLoad()

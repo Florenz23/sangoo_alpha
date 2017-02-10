@@ -25,7 +25,7 @@ class CustomTabBarController: UITabBarController {
         //viewControllers = [connectNavController, contactNavController, settingNavController]
         //tabBarController?.viewControllers = [settingNavController,connectNavController, contactNavController]
         //viewControllers = [settingNavController,connectNavController, contactNavController]
-        viewControllers = [contactNavController, settingNavController,connectNavController]
+        viewControllers = [contactNavController, connectNavController, settingNavController]
         
         
         //setup login

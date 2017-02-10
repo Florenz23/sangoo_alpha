@@ -18,43 +18,44 @@ private var deduplicationNotificationToken: NotificationToken! // FIXME: Remove 
 private func setDefaultRealmConfiguration(with user: SyncUser) {
     Realm.Configuration.defaultConfiguration = Realm.Configuration(
         syncConfiguration: SyncConfiguration(user: user, realmURL: Constants.syncServerURL!),
-        objectTypes: [UserDataList.self, UserData.self, AuthData.self, AuthDataList.self, User.self, UserRelations.self, UserRelationsContact.self, UserRelationsContactSharedData.self, SharedDataKeys.self, UserGeoData.self]
+        objectTypes: [UserData.self, AuthData.self, User.self, UserGeoData.self, UserDataList.self, AuthDataList.self]
     )
     let realm = try! Realm()
     
     if realm.isEmpty {
         try! realm.write {
-            let list = UserData()
-            list.userId = Constants.defaultListID
-            list.userFirstName = Constants.defaultListName
-            let listLists = UserDataList()
-            listLists.userDataItems.append(list)
-            realm.add(listLists)
+            let dummyContent = DummyDbContent()
+            dummyContent.iniAuth()
+            dummyContent.iniUser()
+            realm.add(dummyContent.trumpAuth)
+            realm.add(dummyContent.hillaryAuth)
+            realm.add(dummyContent.trumpUser)
+            realm.add(dummyContent.hillaryUser)
         }
     }
     
     // FIXME: Remove once core supports ordered sets: https://github.com/realm/realm-core/issues/1206
     deduplicationNotificationToken = realm.addNotificationBlock { _, realm in
-        let items = realm.objects(UserDataList.self).first!.userDataItems
-        guard items.count > 1 && !realm.isInWriteTransaction else { return }
-        let itemsReference = ThreadSafeReference(to: items)
-        // Deduplicate
-        DispatchQueue(label: "io.realm.RealmTasks.bg").async {
-            let realm = try! Realm(configuration: realm.configuration)
-            guard let items = realm.resolve(itemsReference), items.count > 1 else {
-                return
-            }
-            realm.beginWrite()
-            let listReferenceIDs = NSCountedSet(array: items.map { $0.userId })
-            for id in listReferenceIDs where listReferenceIDs.count(for: id) > 1 {
-                let id = id as! String
-                let indexesToRemove = items.enumerated().flatMap { index, element in
-                    return element.userId == id ? index : nil
-                }
-                indexesToRemove.dropFirst().reversed().forEach(items.remove(objectAtIndex:))
-            }
-            try! realm.commitWrite()
-        }
+//        let items = realm.objects(UserDataList.self).first!.userDataItems
+//        guard items.count > 1 && !realm.isInWriteTransaction else { return }
+//        let itemsReference = ThreadSafeReference(to: items)
+//        // Deduplicate
+//        DispatchQueue(label: "io.realm.RealmTasks.bg").async {
+//            let realm = try! Realm(configuration: realm.configuration)
+//            guard let items = realm.resolve(itemsReference), items.count > 1 else {
+//                return
+//            }
+//            realm.beginWrite()
+//            let listReferenceIDs = NSCountedSet(array: items.map { $0.id })
+//            for id in listReferenceIDs where listReferenceIDs.count(for: id) > 1 {
+//                let id = id as! Int
+//                let indexesToRemove = items.enumerated().flatMap { index, element in
+//                    return element.id == id ? index : nil
+//                }
+//                indexesToRemove.dropFirst().reversed().forEach(items.remove(objectAtIndex:))
+//            }
+//            try! realm.commitWrite()
+//        }
     }
 }
 

@@ -21,8 +21,8 @@ final class AuthData: Object {
 
 final class User: Object {
     dynamic var userId = UUID().uuidString
-    dynamic var userData : UserData?
-    let userRelations = List<UserRelations>()
+    let userData = List<UserData>()
+    var userDataShared = List<UserData>()
     dynamic var userGeoData : UserGeoData?
     
     override static func primaryKey() -> String? {
@@ -31,54 +31,11 @@ final class User: Object {
 }
 
 final class UserData: Object {
-    dynamic var userId = UUID().uuidString
-    dynamic var userFirstName = ""
-    dynamic var userLastName = ""
-    dynamic var userEmail = ""
-    dynamic var userPhone = ""
+    dynamic var descriptionEnglish = ""
+    dynamic var descriptionGerman = ""
+    dynamic var dataValue = ""
     
-    override static func primaryKey() -> String? {
-        return "userId"
-    }
 }
-
-final class UserRelations: Object {
-    dynamic var id : Int = 0
-    dynamic var userRelationsContact : UserRelationsContact?
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-final class UserRelationsContact: Object {
-    dynamic var id : Int = 0
-    dynamic var contactId : UserData?
-    let userRelationsContactSharedData = List<UserRelationsContactSharedData>()
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-final class UserRelationsContactSharedData: Object {
-    dynamic var id : Int = 0
-    dynamic var sharedDataKeys = 0
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-final class SharedDataKeys: Object {
-    dynamic var keyId : Int = 0
-    dynamic var keyDescription = ""
-    
-    override static func primaryKey() -> String? {
-        return "keyId"
-    }
-}
-
 
 final class UserGeoData: Object {
     dynamic var id : Int = 0
@@ -92,11 +49,11 @@ final class UserGeoData: Object {
 }
 
 final class UserDataList: Object {
-    dynamic var userId = UUID().uuidString
+    dynamic var id : Int = 0
     let userDataItems = List<UserData>()
     
     override static func primaryKey() -> String? {
-        return "userId"
+        return "id"
     }
 }
 
