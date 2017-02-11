@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import SkyFloatingLabelTextField
+
 
 
 class EditSettingsTableViewController: UITableViewController {
@@ -17,7 +19,8 @@ class EditSettingsTableViewController: UITableViewController {
     
     var realm: Realm!
     var cookie = LocalCookie()
-
+    
+    var textFieldArray = [SkyFloatingLabelTextField]()
     
     
     var authData = AuthData()
@@ -55,6 +58,17 @@ class EditSettingsTableViewController: UITableViewController {
         
     }
     
+    func createTextFields() {
+        
+        var textField : EditUISettings
+        for data in userData {
+            textField = EditUISettings()
+            textField.setupTextField(description: data.descriptionGerman, text: data.dataValue)
+            textFieldArray.append(textField.textField)
+        }
+        
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -62,28 +76,16 @@ class EditSettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        return userData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell", for: indexPath)
         cell.selectionStyle = .none
-        
-        //disableSelection
-        
-        let data = userData[indexPath.row]
-        self.textField.setupTextField(description: data.descriptionGerman, text: data.dataValue)
-        cell.addSubview(textField.textField)
-        if indexPath.row == 5 {
-           
-        }
+        createTextFields()
+        cell.addSubview(textFieldArray[indexPath.row])
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 5 {
-        }
     }
     
     
@@ -140,6 +142,7 @@ class EditSettingsTableViewController: UITableViewController {
             if self.authData.realm == nil, let list = self.realm.objects(AuthData.self).filter(searchString).first {
                 self.authData = list
             }
+            self.tableView.reloadData()
         }
     }
     
@@ -162,15 +165,13 @@ class EditSettingsTableViewController: UITableViewController {
 
     
     func saveData() {
-        
+        var i : Int = 0
         try! realm.write {
-//            authData.userName = userName.textField.text!
-//            userData.userFirstName = userFirstName.textField.text!
-//            userData.userLastName = userLastName.textField.text!
-//            userData.userEmail = userEmail.textField.text!
-//            userData.userPhone = userPhone.textField.text!
+            for data in userData {
+                data.dataValue = textFieldArray[i].text!
+                i = i + 1
+            }
         }
-        
     }
     
 }
