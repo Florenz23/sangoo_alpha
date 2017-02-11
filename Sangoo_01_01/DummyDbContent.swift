@@ -28,65 +28,70 @@ class DummyDbContent {
     
     func iniUser() {
         
-        
-        
         //ini Ids
         
         trumpUser.userId = trumpAuth.userId
         hillaryUser.userId = hillaryAuth.userId
         
-        //userData
+        //connectData
         
         let userDataFirstName = createUserData(description: "Vorname",value: "Donald")
-        trumpUser.userData.append(userDataFirstName)
+        trumpUser.connectData.append(userDataFirstName)
         let userDataLastName = createUserData(description: "Nachname",value: "Trump")
-        trumpUser.userData.append(userDataLastName)
+        trumpUser.connectData.append(userDataLastName)
         let userDataPhone = createUserData(description: "Telefonnummer",value: "111111")
-        trumpUser.userData.append(userDataPhone)
+        trumpUser.connectData.append(userDataPhone)
         let userDataEmail = createUserData(description: "Email",value: "Trump@maga.com")
-        trumpUser.userData.append(userDataEmail)
+        trumpUser.connectData.append(userDataEmail)
         
         let userDataFirstName1 = createUserData(description: "Vorname",value: "Hillary")
-        hillaryUser.userData.append(userDataFirstName1)
+        hillaryUser.connectData.append(userDataFirstName1)
         let userDataLastName1 = createUserData(description: "Nachname",value: "Clinton")
-        hillaryUser.userData.append(userDataLastName1)
+        hillaryUser.connectData.append(userDataLastName1)
         let userDataPhone1 = createUserData(description: "Telefonnummer",value: "222222")
-        hillaryUser.userData.append(userDataPhone1)
+        hillaryUser.connectData.append(userDataPhone1)
         let userDataEmail1 = createUserData(description: "Email",value: "hillary@war.com")
-        hillaryUser.userData.append(userDataEmail1)
+        hillaryUser.connectData.append(userDataEmail1)
 
         
-        // userRelation
-        let trumpUserRelation = UserRelation()
-        let hillaryUserRelation = UserRelation()
+        // ConnectList
+        let trumpConnectList = ConnectList()
+        let hillaryConnectList = ConnectList()
+
         
-        
-        
-        // userRelationDataShared
-        
-        trumpUserRelation.userDataShared.append(userDataFirstName1)
-        trumpUserRelation.userDataShared.append(userDataLastName1)
-        
-        hillaryUserRelation.userDataShared.append(userDataPhone)
-        hillaryUserRelation.userDataShared.append(userDataEmail)
+        // ConnectUserList
+        let trumpConnectUserList = ConnectUserList()
+        let hillaryConnectUserList = ConnectUserList()
         
         // userRelationDataShared
         
-        trumpUserRelation.userDescription.append(userDataFirstName1)
+        trumpConnectUserList.userDataShared.append(userDataFirstName1)
+        trumpConnectUserList.userDataShared.append(userDataLastName1)
         
-        hillaryUserRelation.userDescription.append(userDataFirstName)
+        hillaryConnectUserList.userDataShared.append(userDataPhone)
+        hillaryConnectUserList.userDataShared.append(userDataEmail)
+        
+        // userRelationDataShared
+        
+        trumpConnectUserList.userDescription.append(userDataFirstName1)
+        
+        hillaryConnectUserList.userDescription.append(userDataFirstName)
         
         // add Relation
         
-        trumpUser.userRelation.append(hillaryUserRelation)
-        hillaryUser.userRelation.append(trumpUserRelation)
-
+        trumpConnectList.connectUserList.append(trumpConnectUserList)
+        hillaryConnectList.connectUserList.append(hillaryConnectUserList)
+        
+        // add Relation
+        
+        trumpUser.connectList.append(trumpConnectList)
+        hillaryUser.connectList.append(hillaryConnectList)
         
     }
     
-    func createUserData(description : String, value : String) -> UserData {
+    func createUserData(description : String, value : String) -> ConnectData {
         
-        let userData = UserData()
+        let userData = ConnectData()
         print(userData)
         userData.descriptionGerman = description
         userData.dataValue = value

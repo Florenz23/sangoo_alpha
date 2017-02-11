@@ -40,16 +40,16 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
         print("save try")
         
         user.userId = authData.userId
-        let userData1 = UserData()
+        let userData1 = ConnectData()
         userData1.descriptionGerman = "Vorname"
         userData1.dataValue = userData.userFirstName
-        let userData2 = UserData()
+        let userData2 = ConnectData()
         userData2.descriptionGerman = "Nachname"
         userData2.dataValue = userData.userLastName
-        let userData3 = UserData()
+        let userData3 = ConnectData()
         userData3.descriptionGerman = "Email"
         userData3.dataValue = userData.userEmail
-        let userData4 = UserData()
+        let userData4 = ConnectData()
         userData4.descriptionGerman = "Telefonnummer"
         userData4.dataValue = userData.userPhone
         

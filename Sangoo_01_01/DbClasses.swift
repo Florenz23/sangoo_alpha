@@ -21,31 +21,35 @@ final class AuthData: Object {
 
 final class User: Object {
     dynamic var userId = UUID().uuidString
-    let userData = List<UserData>()
-    var userRelation = List<UserRelation>()
-    dynamic var userGeoData : UserGeoData?
+    let connectData = List<ConnectData>()
+    var connectList = List<ConnectList>()
     
     override static func primaryKey() -> String? {
         return "userId"
     }
 }
 
-final class UserRelation: Object {
-    let userDescription = List<UserData>()
-    var userDataShared = List<UserData>()
-    dynamic var dataValue = ""
-    
+final class ConnectList: Object {
+    var userDescription = List<ConnectData>()
+    var connectUserList = List<ConnectUserList>()
+    dynamic var geoData : GeoData?
 }
 
 
-final class UserData: Object {
+final class ConnectUserList: Object {
+    let userDescription = List<ConnectData>()
+    var userDataShared = List<ConnectData>()
+}
+
+
+final class ConnectData: Object {
     dynamic var descriptionEnglish = ""
     dynamic var descriptionGerman = ""
     dynamic var dataValue = ""
     
 }
 
-final class UserGeoData: Object {
+final class GeoData: Object {
     dynamic var id : Int = 0
     dynamic var latitude = ""
     dynamic var longitude = ""
@@ -58,7 +62,7 @@ final class UserGeoData: Object {
 
 final class UserDataList: Object {
     dynamic var id : Int = 0
-    let userDataItems = List<UserData>()
+    let userDataItems = List<ConnectData>()
     
     override static func primaryKey() -> String? {
         return "id"

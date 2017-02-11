@@ -17,15 +17,15 @@ class CustomTabBarController: UITabBarController {
         let connectController = ConnectTableViewController()
         let navController = ContactTableViewController()
         let settingController = SettingsTableViewController()
-        let connectNavController = createTabElement(controller: connectController, navTitle : "Connect", imageName: "connect")
+        let connectNavController = createTabElement(controller: connectController, navTitle : "Gruppen", imageName: "connect")
         let contactNavController = createTabElement(controller: navController, navTitle : "Contacts", imageName: "contacts")
         let settingNavController = createTabElement(controller: settingController, navTitle : "Settings", imageName: "settings")
         
         
-        //viewControllers = [connectNavController, contactNavController, settingNavController]
+        viewControllers = [connectNavController, contactNavController, settingNavController]
         //tabBarController?.viewControllers = [settingNavController,connectNavController, contactNavController]
         //viewControllers = [settingNavController,connectNavController, contactNavController]
-        viewControllers = [contactNavController, connectNavController, settingNavController]
+        //viewControllers = [contactNavController, connectNavController, settingNavController]
         
         
         //setup login

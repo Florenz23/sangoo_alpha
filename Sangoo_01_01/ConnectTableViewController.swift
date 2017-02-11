@@ -14,7 +14,7 @@ class ConnectTableViewController: UITableViewController {
     
     // MARK: Model
     
-    var items = List<UserData>()
+    var items = List<ConnectData>()
     var notificationToken: NotificationToken!
     var realm: Realm!
     
@@ -25,10 +25,8 @@ class ConnectTableViewController: UITableViewController {
     }
     
     func setupUI() {
-        title = "My Tasks"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
-        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createGroup))
     }
     
     
@@ -58,13 +56,16 @@ class ConnectTableViewController: UITableViewController {
         DispatchQueue.main.async {
             // Show initial tasks
             if self.items.realm == nil, let list = self.realm.objects(User.self).first {
-                self.items = list.userData
+                self.items = list.connectData
             }
             self.tableView.reloadData()
         }
     }
 
-
+    func createGroup() {
+        
+        print("create")
+    }
     
     
     
@@ -99,24 +100,4 @@ class ConnectTableViewController: UITableViewController {
     
     
     // MARK: Functions
-    
-    func add() {
-        
-        let alertController = UIAlertController(title: "New Task", message: "Enter Task Name", preferredStyle: .alert)
-        var alertTextField: UITextField!
-        alertController.addTextField { textField in
-            alertTextField = textField
-            textField.placeholder = "Task Name"
-        }
-        alertController.addAction(UIAlertAction(title: "Add", style: .default) { _ in
-            guard let text = alertTextField.text , !text.isEmpty else { return }
-            
-            let items = self.items
-            let test = UserData()
-            try! items.realm?.write {
-                items.insert(test, at: 0)
-            }
-        })
-        present(alertController, animated: true, completion: nil)
-    }
 }

@@ -25,7 +25,7 @@ class EditSettingsTableViewController: UITableViewController {
     
     var authData = AuthData()
     var user = User()
-    var userData = List<UserData>()
+    var userData = List<ConnectData>()
     
     
     override func viewDidLoad() {
@@ -137,7 +137,7 @@ class EditSettingsTableViewController: UITableViewController {
             let userId = self.cookie.getData()
             let searchString = "userId == '\(userId)'"
             if self.userData.realm == nil, let list = self.realm.objects(User.self).filter(searchString).first {
-                self.userData = list.userData
+                self.userData = list.connectData
             }
             if self.authData.realm == nil, let list = self.realm.objects(AuthData.self).filter(searchString).first {
                 self.authData = list
