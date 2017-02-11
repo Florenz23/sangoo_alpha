@@ -56,13 +56,30 @@ class DummyDbContent {
         hillaryUser.userData.append(userDataEmail1)
 
         
-        // sharedData
+        // userRelation
+        let trumpUserRelation = UserRelation()
+        let hillaryUserRelation = UserRelation()
         
-        trumpUser.userDataShared.append(userDataFirstName)
-        trumpUser.userDataShared.append(userDataLastName)
         
-        hillaryUser.userDataShared.append(userDataFirstName)
-        hillaryUser.userDataShared.append(userDataLastName)
+        
+        // userRelationDataShared
+        
+        trumpUserRelation.userDataShared.append(userDataFirstName1)
+        trumpUserRelation.userDataShared.append(userDataLastName1)
+        
+        hillaryUserRelation.userDataShared.append(userDataPhone)
+        hillaryUserRelation.userDataShared.append(userDataEmail)
+        
+        // userRelationDataShared
+        
+        trumpUserRelation.userDescription.append(userDataFirstName1)
+        
+        hillaryUserRelation.userDescription.append(userDataFirstName)
+        
+        // add Relation
+        
+        trumpUser.userRelation.append(hillaryUserRelation)
+        hillaryUser.userRelation.append(trumpUserRelation)
 
         
     }

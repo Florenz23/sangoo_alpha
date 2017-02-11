@@ -22,13 +22,21 @@ final class AuthData: Object {
 final class User: Object {
     dynamic var userId = UUID().uuidString
     let userData = List<UserData>()
-    var userDataShared = List<UserData>()
+    var userRelation = List<UserRelation>()
     dynamic var userGeoData : UserGeoData?
     
     override static func primaryKey() -> String? {
         return "userId"
     }
 }
+
+final class UserRelation: Object {
+    let userDescription = List<UserData>()
+    var userDataShared = List<UserData>()
+    dynamic var dataValue = ""
+    
+}
+
 
 final class UserData: Object {
     dynamic var descriptionEnglish = ""
