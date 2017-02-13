@@ -16,6 +16,7 @@ class LoginTableViewController: UITableViewController {
     var realm: Realm!
     var authData = List<AuthData>()
     var user = AuthData()
+    var realmHelper = RealmHelper()
     
     let cookie = LocalCookie()
     
@@ -111,15 +112,6 @@ class LoginTableViewController: UITableViewController {
         userPassword.title = "Password"
 
     }
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
     
     func loginButtonTapped(_ button: UIButton) {
         print("Login pressed 👍")
@@ -180,14 +172,7 @@ class LoginTableViewController: UITableViewController {
 
     }
 
-    func checkUserAuth(userWhoTriedLogin : AuthData) -> Bool {
-        
-        let userPassword = self.userPassword.text!
-        if (userWhoTriedLogin.userPassword == userPassword as String) {
-            return true
-        }
-        return false
-    }
+    
     
     func checkIfFieldsLeftEmpty(){
         
@@ -215,13 +200,19 @@ class LoginTableViewController: UITableViewController {
 
     func setRealm(user : SyncUser) {
         DispatchQueue.main.async {
-            // Open Realm
-            let configuration = Realm.Configuration(
-                syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
-            )
-            self.realm = try! Realm(configuration: configuration)
+            
+            self.realm = self.realmHelper.iniRealm(syncUser: user)
             
         }
+    }
+    
+    func checkUserAuth(userWhoTriedLogin : AuthData) -> Bool {
+        
+        let userPassword = self.userPassword.text!
+        if (userWhoTriedLogin.userPassword == userPassword as String) {
+            return true
+        }
+        return false
     }
     
     func goToRegistrationView() {
@@ -241,6 +232,17 @@ class LoginTableViewController: UITableViewController {
     }
     
     // table view
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell", for: indexPath)

@@ -26,12 +26,14 @@ class EditSettingsTableViewController: UITableViewController {
     var authData = AuthData()
     var user = User()
     var userData = List<ConnectData>()
+    var realmHelper = RealmHelper()
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupRealm()
+        setupRealm(syncUser: SyncUser.current!)
     }
     
     
@@ -109,41 +111,16 @@ class EditSettingsTableViewController: UITableViewController {
     }
     
     
-    func setupRealm() {
-        
-        setRealm(user: SyncUser.current!)
-        defineUpdateList()
-        
-    }
-    
-    func setRealm(user : SyncUser) {
+    func setupRealm(syncUser : SyncUser) {
         
         DispatchQueue.main.async {
-            // Open Realm
-            let configuration = Realm.Configuration(
-                syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
-            )
-            self.realm = try! Realm(configuration: configuration)
+            
+            self.realm = self.realmHelper.iniRealm(syncUser: syncUser)
+            self.userData = self.realmHelper.getUser(user: self.user).connectData
+            self.tableView.reloadData()
             
         }
         
-    }
-    
-    
-    func defineUpdateList() {
-        
-        DispatchQueue.main.async {
-            // Show initial tasks
-            let userId = self.cookie.getData()
-            let searchString = "userId == '\(userId)'"
-            if self.userData.realm == nil, let list = self.realm.objects(User.self).filter(searchString).first {
-                self.userData = list.connectData
-            }
-            if self.authData.realm == nil, let list = self.realm.objects(AuthData.self).filter(searchString).first {
-                self.authData = list
-            }
-            self.tableView.reloadData()
-        }
     }
     
     func cancel() {

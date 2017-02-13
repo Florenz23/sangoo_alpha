@@ -12,19 +12,35 @@ import RealmSwift
 class RealmHelper {
     
     var realm: Realm!
+    var cookie = LocalCookie()
     
     
-    func iniRealm(user : SyncUser)  -> Realm {
-        DispatchQueue.main.async {
+    func iniRealm(syncUser : SyncUser)  -> Realm {
             // Open Realm
             let configuration = Realm.Configuration(
-                syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realm://10.0.1.4:9080/~/sangoo")!)
+                syncConfiguration: SyncConfiguration(user: syncUser, realmURL: URL(string: "realm://\(Constants.syncHost):9080/~/sangoo")!)
             )
-            self.realm = try! Realm(configuration: configuration)
-            
-        }
-        return realm
+            realm = try! Realm(configuration: configuration)
+        
+            return realm
     }
     
+    func getUser(user : User) -> User {
+        
+        var user = user
+        let userId = self.cookie.getData()
+        let searchString = "userId == '\(userId)'"
+        print(searchString)
+        if user.realm == nil, let receivedUser = self.realm.objects(User.self).filter(searchString).first {
+            user = receivedUser
+        }
+        return user
+        
+    }
+    
+    func getConnectListList() -> ConnectListList? {
+        let connectListList = self.realm.objects(ConnectListList.self).first
+        return connectListList
+    }
     
 }

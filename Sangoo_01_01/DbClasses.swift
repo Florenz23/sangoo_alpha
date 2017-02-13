@@ -30,7 +30,7 @@ final class User: Object {
 }
 
 final class ConnectList: Object {
-    var userDescription = List<ConnectData>()
+    var connectDescription = List<ConnectData>()
     var connectUserList = List<ConnectUserList>()
     dynamic var geoData : GeoData?
 }
@@ -60,9 +60,9 @@ final class GeoData: Object {
     }
 }
 
-final class UserDataList: Object {
+final class UserList: Object {
     dynamic var id : Int = 0
-    let userDataItems = List<ConnectData>()
+    let userDataItems = List<User>()
     
     override static func primaryKey() -> String? {
         return "id"
@@ -72,6 +72,15 @@ final class UserDataList: Object {
 final class AuthDataList: Object {
     dynamic var id : Int = 0
     let authDataItems = List<AuthData>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+final class ConnectListList: Object {
+    dynamic var id : Int = 0
+    let connectListItems = List<ConnectList>()
     
     override static func primaryKey() -> String? {
         return "id"

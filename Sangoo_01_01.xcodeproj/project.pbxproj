@@ -32,6 +32,9 @@
 		C034BE031E487B8700D7703D /* EditUISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034BE021E487B8700D7703D /* EditUISettings.swift */; };
 		C03D3F0F1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */; };
 		C03D3F111E40E22E005F5E76 /* LandingPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */; };
+		C05AFCAC1E51E62B007E4974 /* CreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFCAB1E51E62B007E4974 /* CreateGroupTableViewController.swift */; };
+		C05AFCAF1E51E688007E4974 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFCAE1E51E688007E4974 /* TableViewController.swift */; };
+		C05AFCB11E52140F007E4974 /* SearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFCB01E52140F007E4974 /* SearchGroupTableViewController.swift */; };
 		C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C681E3E532200D41669 /* LoginTableViewController.swift */; };
 		C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */; };
 		C0A59C701E407E9D00D41669 /* MessengerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */; };
@@ -71,6 +74,9 @@
 		C03D3F0E1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstNameRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C03D3F101E40E22E005F5E76 /* LandingPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageTableViewController.swift; sourceTree = "<group>"; };
 		C05AE9621E3E3CE90082DF35 /* Sangoo_01_01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sangoo_01_01.entitlements; sourceTree = "<group>"; };
+		C05AFCAB1E51E62B007E4974 /* CreateGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupTableViewController.swift; sourceTree = "<group>"; };
+		C05AFCAE1E51E688007E4974 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		C05AFCB01E52140F007E4974 /* SearchGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGroupTableViewController.swift; sourceTree = "<group>"; };
 		C0A59C681E3E532200D41669 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		C0A59C6C1E3E5B3E00D41669 /* EntranceNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntranceNavigationController.swift; sourceTree = "<group>"; };
 		C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessengerClass.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 		C02169E11E3E2F6300BCA625 /* Sangoo_01_01 */ = {
 			isa = PBXGroup;
 			children = (
+				C05AFCAD1E51E658007E4974 /* Snippets */,
 				C05AE9621E3E3CE90082DF35 /* Sangoo_01_01.entitlements */,
 				C02169E21E3E2F6300BCA625 /* AppDelegate.swift */,
 				C02169E91E3E2F6400BCA625 /* Assets.xcassets */,
@@ -203,10 +210,28 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
-		C0A59C6E1E407E6300D41669 /* ViewController */ = {
+		C05AFCAA1E51E5B5007E4974 /* Group */ = {
 			isa = PBXGroup;
 			children = (
 				C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */,
+				C05AFCAB1E51E62B007E4974 /* CreateGroupTableViewController.swift */,
+				C05AFCB01E52140F007E4974 /* SearchGroupTableViewController.swift */,
+			);
+			name = Group;
+			sourceTree = "<group>";
+		};
+		C05AFCAD1E51E658007E4974 /* Snippets */ = {
+			isa = PBXGroup;
+			children = (
+				C05AFCAE1E51E688007E4974 /* TableViewController.swift */,
+			);
+			name = Snippets;
+			sourceTree = "<group>";
+		};
+		C0A59C6E1E407E6300D41669 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C05AFCAA1E51E5B5007E4974 /* Group */,
 				C0C8C7681E4C4CF800B6BDD9 /* Contacts */,
 				C034BE011E48770800D7703D /* Settings */,
 				C00771AF1E41062B00BB5D47 /* Registration */,
@@ -361,11 +386,13 @@
 				C03300A61E44DE0000526F7E /* LoadingAnimation.swift in Sources */,
 				C00F87881E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift in Sources */,
 				C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */,
+				C05AFCAC1E51E62B007E4974 /* CreateGroupTableViewController.swift in Sources */,
 				C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */,
 				C034BE031E487B8700D7703D /* EditUISettings.swift in Sources */,
 				C02169F51E3E33BE00BCA625 /* CustomTabBarController.swift in Sources */,
 				C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */,
 				C02169E31E3E2F6300BCA625 /* AppDelegate.swift in Sources */,
+				C05AFCAF1E51E688007E4974 /* TableViewController.swift in Sources */,
 				C03D3F111E40E22E005F5E76 /* LandingPageTableViewController.swift in Sources */,
 				C00F878C1E41F1FA0082E28E /* EmailRegistrationTableViewController.swift in Sources */,
 				C034BE001E4876F500D7703D /* EditSettingsTableViewController.swift in Sources */,
@@ -375,6 +402,7 @@
 				C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */,
 				C0034FD31E4A7F3800C5CEC3 /* RealmHelper.swift in Sources */,
 				C0C8C76A1E4C4D5000B6BDD9 /* DetailContactTableViewController.swift in Sources */,
+				C05AFCB11E52140F007E4974 /* SearchGroupTableViewController.swift in Sources */,
 				C00F878A1E41EFFB0082E28E /* PasswordRegistrationTableViewController.swift in Sources */,
 				C0C8C76E1E4CBC3400B6BDD9 /* RegistrationUserData.swift in Sources */,
 				C0034FC41E49BA9400C5CEC3 /* DbConnector.swift in Sources */,
