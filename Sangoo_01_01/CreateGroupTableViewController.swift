@@ -1,5 +1,7 @@
 import UIKit
 import RealmSwift
+import MapKit
+
 
 class CreateGroupTableViewController: UITableViewController {
     
@@ -11,12 +13,15 @@ class CreateGroupTableViewController: UITableViewController {
     var realmHelper = RealmHelper()
     var realm : Realm!
     var user = User()
-    
+    var locationManager = LocationManager()
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupRealm(syncUser : SyncUser.current!)
+        getLocationCoordinates()
     }
     
     
@@ -61,6 +66,7 @@ class CreateGroupTableViewController: UITableViewController {
     
     func createGroup () {
         
+        var coordinates : CLLocationCoordinate2D?
         print("Erstelle Gruppe")
         let group = ConnectList()
         let groupDescription = ConnectData()
@@ -72,12 +78,22 @@ class CreateGroupTableViewController: UITableViewController {
         group.connectDescription.append(groupDescription)
         group.connectUserList.append(groupAdminData)
         DispatchQueue.main.async {
+            let geoData = GeoData()
+            var coordinates = self.locationManager.coordinates
+            // todo Check if coordinates exist, sonst warten
+            geoData.longitude = (coordinates?.longitude)!
+            geoData.latitude = (coordinates?.latitude)!
             let connectListList = self.realmHelper.getConnectListList()
+            group.geoData = geoData
             try! self.realm.write {
                 self.user.connectList.append(group)
                 connectListList?.connectListItems.append(group)
             }
         }
+    }
+    
+    func getLocationCoordinates() {
+        self.locationManager.getCurrentLocation()
     }
     
     

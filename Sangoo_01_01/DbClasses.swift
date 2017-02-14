@@ -58,14 +58,9 @@ final class ConnectData: Object {
 }
 
 final class GeoData: Object {
-    dynamic var id : Int = 0
-    dynamic var latitude = ""
-    dynamic var longitude = ""
+    dynamic var latitude : Double = 0
+    dynamic var longitude : Double = 0
     dynamic var updateTime = NSDate()
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
 }
 
 final class UserList: Object {

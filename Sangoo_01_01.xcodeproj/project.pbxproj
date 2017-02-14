@@ -43,6 +43,7 @@
 		C0C8C76C1E4C760700B6BDD9 /* DummyDbContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */; };
 		C0C8C76E1E4CBC3400B6BDD9 /* RegistrationUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */; };
 		C0CCC3711E52587A0042BFBF /* SelectDataToShareTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CCC3701E52587A0042BFBF /* SelectDataToShareTableViewController.swift */; };
+		C0FAC67E1E537E10000AD55A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FAC67D1E537E10000AD55A /* LocationManager.swift */; };
 		D0B8B11D3239515818B82F8F /* Pods_Sangoo_01_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C60C44AA55374ED04D244AE /* Pods_Sangoo_01_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDbContent.swift; sourceTree = "<group>"; };
 		C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationUserData.swift; sourceTree = "<group>"; };
 		C0CCC3701E52587A0042BFBF /* SelectDataToShareTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDataToShareTableViewController.swift; sourceTree = "<group>"; };
+		C0FAC67D1E537E10000AD55A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C2A3942C8A70E9618D4275F9 /* Pods-Sangoo_01_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.debug.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.debug.xcconfig"; sourceTree = "<group>"; };
 		E3770501118B713A431347DF /* Pods-Sangoo_01_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.release.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +212,7 @@
 				C0034FD21E4A7F3800C5CEC3 /* RealmHelper.swift */,
 				C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */,
 				C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */,
+				C0FAC67D1E537E10000AD55A /* LocationManager.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */,
 				C02169E31E3E2F6300BCA625 /* AppDelegate.swift in Sources */,
 				C05AFCAF1E51E688007E4974 /* TableViewController.swift in Sources */,
+				C0FAC67E1E537E10000AD55A /* LocationManager.swift in Sources */,
 				C03D3F111E40E22E005F5E76 /* LandingPageTableViewController.swift in Sources */,
 				C00F878C1E41F1FA0082E28E /* EmailRegistrationTableViewController.swift in Sources */,
 				C034BE001E4876F500D7703D /* EditSettingsTableViewController.swift in Sources */,
@@ -463,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -507,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
