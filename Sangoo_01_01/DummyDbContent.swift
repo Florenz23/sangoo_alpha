@@ -107,7 +107,6 @@ class DummyDbContent {
         hillaryUser.connectList.append(trumpPublicConnectList)
         
         
-        
         // fill global List
         //ConnectListList
         connectListList.connectListItems.append(hillaryConnectList)
@@ -121,6 +120,14 @@ class DummyDbContent {
         //UserDataList
         userList.userDataItems.append(trumpUser)
         userList.userDataItems.append(hillaryUser)
+        
+        // add Messages in the Group
+        var message1 = Message()
+        message1.messageText = "Hi Hillary"
+        var message2 = Message()
+        message2.messageText = "Hi Donald"
+        trumpPublicConnectList.message.append(message1)
+        trumpPublicConnectList.message.append(message2)
         
     }
     

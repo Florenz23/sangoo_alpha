@@ -27,6 +27,7 @@
 		C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */; };
 		C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F81E3E377800BCA625 /* ContactTableViewController.swift */; };
 		C02169FB1E3E379800BCA625 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169FA1E3E379800BCA625 /* SettingsTableViewController.swift */; };
+		C02F68771E52F35C00B9B19D /* GroupViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02F68761E52F35C00B9B19D /* GroupViewTableViewController.swift */; };
 		C03300A61E44DE0000526F7E /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03300A51E44DE0000526F7E /* LoadingAnimation.swift */; };
 		C034BE001E4876F500D7703D /* EditSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034BDFF1E4876F500D7703D /* EditSettingsTableViewController.swift */; };
 		C034BE031E487B8700D7703D /* EditUISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034BE021E487B8700D7703D /* EditUISettings.swift */; };
@@ -41,6 +42,7 @@
 		C0C8C76A1E4C4D5000B6BDD9 /* DetailContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C7691E4C4D5000B6BDD9 /* DetailContactTableViewController.swift */; };
 		C0C8C76C1E4C760700B6BDD9 /* DummyDbContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */; };
 		C0C8C76E1E4CBC3400B6BDD9 /* RegistrationUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */; };
+		C0CCC3711E52587A0042BFBF /* SelectDataToShareTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CCC3701E52587A0042BFBF /* SelectDataToShareTableViewController.swift */; };
 		D0B8B11D3239515818B82F8F /* Pods_Sangoo_01_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C60C44AA55374ED04D244AE /* Pods_Sangoo_01_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,7 @@
 		C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
 		C02169F81E3E377800BCA625 /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		C02169FA1E3E379800BCA625 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		C02F68761E52F35C00B9B19D /* GroupViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewTableViewController.swift; sourceTree = "<group>"; };
 		C03300A51E44DE0000526F7E /* LoadingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		C034BDFF1E4876F500D7703D /* EditSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSettingsTableViewController.swift; sourceTree = "<group>"; };
 		C034BE021E487B8700D7703D /* EditUISettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUISettings.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		C0C8C7691E4C4D5000B6BDD9 /* DetailContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContactTableViewController.swift; sourceTree = "<group>"; };
 		C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDbContent.swift; sourceTree = "<group>"; };
 		C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationUserData.swift; sourceTree = "<group>"; };
+		C0CCC3701E52587A0042BFBF /* SelectDataToShareTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDataToShareTableViewController.swift; sourceTree = "<group>"; };
 		C2A3942C8A70E9618D4275F9 /* Pods-Sangoo_01_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.debug.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.debug.xcconfig"; sourceTree = "<group>"; };
 		E3770501118B713A431347DF /* Pods-Sangoo_01_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sangoo_01_01.release.xcconfig"; path = "Sangoo_01_01/Pods/Target Support Files/Pods-Sangoo_01_01/Pods-Sangoo_01_01.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,8 +218,10 @@
 			isa = PBXGroup;
 			children = (
 				C02169F61E3E374C00BCA625 /* ConnectTableViewController.swift */,
+				C02F68761E52F35C00B9B19D /* GroupViewTableViewController.swift */,
 				C05AFCAB1E51E62B007E4974 /* CreateGroupTableViewController.swift */,
 				C05AFCB01E52140F007E4974 /* SearchGroupTableViewController.swift */,
+				C0CCC3701E52587A0042BFBF /* SelectDataToShareTableViewController.swift */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 				C02169F71E3E374C00BCA625 /* ConnectTableViewController.swift in Sources */,
 				C05AFCAC1E51E62B007E4974 /* CreateGroupTableViewController.swift in Sources */,
 				C02169F91E3E377800BCA625 /* ContactTableViewController.swift in Sources */,
+				C0CCC3711E52587A0042BFBF /* SelectDataToShareTableViewController.swift in Sources */,
 				C034BE031E487B8700D7703D /* EditUISettings.swift in Sources */,
 				C02169F51E3E33BE00BCA625 /* CustomTabBarController.swift in Sources */,
 				C0A59C6D1E3E5B3E00D41669 /* EntranceNavigationController.swift in Sources */,
@@ -398,6 +405,7 @@
 				C034BE001E4876F500D7703D /* EditSettingsTableViewController.swift in Sources */,
 				C008DA8D1E4798C100D51D70 /* UISettings.swift in Sources */,
 				C00771B11E410D1800BB5D47 /* UIRegistration.swift in Sources */,
+				C02F68771E52F35C00B9B19D /* GroupViewTableViewController.swift in Sources */,
 				C008DA8F1E47A81600D51D70 /* LocalCookie.swift in Sources */,
 				C0A59C691E3E532200D41669 /* LoginTableViewController.swift in Sources */,
 				C0034FD31E4A7F3800C5CEC3 /* RealmHelper.swift in Sources */,

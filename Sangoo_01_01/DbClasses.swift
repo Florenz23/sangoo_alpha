@@ -33,6 +33,14 @@ final class ConnectList: Object {
     var connectDescription = List<ConnectData>()
     var connectUserList = List<ConnectUserList>()
     dynamic var geoData : GeoData?
+    var message = List<Message>()
+}
+
+final class Message: Object {
+    
+    dynamic var messageText = ""
+    var userData = List<ConnectData>()
+    
 }
 
 
