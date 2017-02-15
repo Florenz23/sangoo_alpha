@@ -39,7 +39,7 @@ class TableViewController: UITableViewController {
         DispatchQueue.main.async {
             
             self.realm = self.realmHelper.iniRealm(syncUser: syncUser)
-            self.connectLists = self.realmHelper.getUser(user: self.user).connectList
+            //self.connectLists = self.realmHelper.getUser(user: self.user).geoData
             self.tableView.reloadData()
             
         }
@@ -49,6 +49,7 @@ class TableViewController: UITableViewController {
     func createGroup() {
         
         print("create")
+
     }
     
     
@@ -63,7 +64,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let item = connectLists[indexPath.row]
-        cell.textLabel?.text = item.connectDescription[0].dataValue
+        //cell.textLabel?.text = item.connectDescription[0].dataValue
         return cell
     }
     

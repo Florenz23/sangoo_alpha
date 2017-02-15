@@ -8,16 +8,20 @@
 
 import UIKit
 import RealmSwift
+import MapKit
+import GeoQueries
 
 
 class SearchGroupTableViewController: UITableViewController {
     
     // MARK: Model
+    @IBOutlet weak var mapView: MKMapView!
+
     
     var notificationToken: NotificationToken!
     var realm: Realm!
     var realmHelper = RealmHelper()
-    var connectLists = List<ConnectList>()
+    var geoQueryResult = [GeoData]()
     var user = User()
     
     
@@ -37,13 +41,26 @@ class SearchGroupTableViewController: UITableViewController {
         
         DispatchQueue.main.async {
             
-            self.realm = self.realmHelper.iniRealm(syncUser: syncUser)
-            if self.connectLists.realm == nil, let list = self.realmHelper.getConnectListList() {
-                self.connectLists = list.connectListItems
+            func updateList() {
+                self.realm = self.realmHelper.iniRealm(syncUser: syncUser)
+                let list = try! self.realm
+                    .objects(GeoData.self)
+                    .filter("type", "restaurant")
+                    .filterGeoRadius(center: self.mapView.centerCoordinate, radius: 500, sortAscending: nil)
+                self.geoQueryResult = list
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
+            updateList()
+            
+            // Notify us when Realm changes
+            self.notificationToken = self.realm.addNotificationBlock { _ in
+                updateList()
+            }
         }
         
+    }
+    deinit {
+        notificationToken.stop()
     }
     
     
@@ -51,13 +68,14 @@ class SearchGroupTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        return connectLists.count
+        return geoQueryResult.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let item = connectLists[indexPath.row]
-        cell.textLabel?.text = item.connectDescription[0].dataValue
+        let item = geoQueryResult[indexPath.row]
+        //cell.textLabel?.text = item.connectDescription[0].dataValue
+        cell.textLabel?.text = "moin"
         return cell
     }
     

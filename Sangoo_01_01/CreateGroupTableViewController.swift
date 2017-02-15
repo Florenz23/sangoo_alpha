@@ -66,7 +66,6 @@ class CreateGroupTableViewController: UITableViewController {
     
     func createGroup () {
         
-        var coordinates : CLLocationCoordinate2D?
         print("Erstelle Gruppe")
         let group = ConnectList()
         let groupDescription = ConnectData()
@@ -79,14 +78,13 @@ class CreateGroupTableViewController: UITableViewController {
         group.connectUserList.append(groupAdminData)
         DispatchQueue.main.async {
             let geoData = GeoData()
-            var coordinates = self.locationManager.coordinates
+            let coordinates = self.locationManager.coordinates
             // todo Check if coordinates exist, sonst warten
-            geoData.longitude = (coordinates?.longitude)!
-            geoData.latitude = (coordinates?.latitude)!
+            geoData.longitudeKey = (coordinates?.longitude)!
+            geoData.latitudeKey = (coordinates?.latitude)!
             let connectListList = self.realmHelper.getConnectListList()
-            group.geoData = geoData
             try! self.realm.write {
-                self.user.connectList.append(group)
+                self.user.geoData.append(geoData)
                 connectListList?.connectListItems.append(group)
             }
         }

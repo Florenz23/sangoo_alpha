@@ -14,6 +14,7 @@ class DummyDbContent {
     var authDataList = AuthDataList()
     var userList = UserList()
     var connectListList = ConnectListList()
+    var geoData = GeoData()
     var trumpAuth = AuthData()
     var hillaryAuth = AuthData()
     var trumpUser = User()
@@ -61,6 +62,11 @@ class DummyDbContent {
         let trumpGroupDescription = createUserData(description: "Gruppenname",value: "Maga")
         trumpPublicConnectList.connectDescription.append(trumpGroupDescription)
         
+        // GeoData
+        let trumpGeoData = GeoData()
+        let hillaryGeoData = GeoData()
+        let trumpPublicGeoData = GeoData()
+        
         
         // ConnectList
         let trumpConnectList = ConnectList()
@@ -69,7 +75,6 @@ class DummyDbContent {
         // ConnectUserList
         let trumpConnectUserList = ConnectUserList()
         let hillaryConnectUserList = ConnectUserList()
-        
         
         // userRelationDataShared
         
@@ -82,7 +87,6 @@ class DummyDbContent {
         // userRelationDataShared
         
         trumpConnectUserList.userDescription.append(userDataFirstName1)
-        
         hillaryConnectUserList.userDescription.append(userDataFirstName)
         
         // add Hillary and Trump to Trumps public List
@@ -93,21 +97,28 @@ class DummyDbContent {
         trumpConnectList.connectUserList.append(trumpConnectUserList)
         hillaryConnectList.connectUserList.append(hillaryConnectUserList)
         
-        // Add RElation description Trum Hillary
+        // Add Relation description Trump Hillary
         trumpConnectList.connectDescription.append(userDataLastName)
-        trumpConnectList.connectDescription.append(userDataLastName1)
+        hillaryConnectList.connectDescription.append(userDataLastName1)
         
         
         // add user to their own Groups
-        trumpUser.connectList.append(trumpConnectList)
-        hillaryUser.connectList.append(hillaryConnectList)
+        trumpGeoData.connectList = trumpConnectList
+        hillaryGeoData.connectList = hillaryConnectList
         
         // suscribe Trump and Hillary in Trumps group
-        trumpUser.connectList.append(trumpPublicConnectList)
-        hillaryUser.connectList.append(trumpPublicConnectList)
+        trumpGeoData.connectList = trumpConnectList
+        hillaryGeoData.connectList = hillaryConnectList
+        trumpPublicGeoData.connectList = trumpPublicConnectList
         
         
         // fill global List
+        //GeoData add users to their groups
+        trumpUser.geoData.append(trumpGeoData)
+        hillaryUser.geoData.append(hillaryGeoData)
+        trumpUser.geoData.append(trumpPublicGeoData)
+        hillaryUser.geoData.append(trumpPublicGeoData)
+        
         //ConnectListList
         connectListList.connectListItems.append(hillaryConnectList)
         connectListList.connectListItems.append(trumpConnectList)
@@ -122,9 +133,9 @@ class DummyDbContent {
         userList.userDataItems.append(hillaryUser)
         
         // add Messages in the Group
-        var message1 = Message()
+        let message1 = Message()
         message1.messageText = "Hi Hillary"
-        var message2 = Message()
+        let message2 = Message()
         message2.messageText = "Hi Donald"
         trumpPublicConnectList.message.append(message1)
         trumpPublicConnectList.message.append(message2)
