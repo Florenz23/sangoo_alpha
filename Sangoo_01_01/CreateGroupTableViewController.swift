@@ -69,7 +69,7 @@ class CreateGroupTableViewController: UITableViewController {
         print("Erstelle Gruppe")
         let group = ConnectList()
         let groupDescription = ConnectData()
-        let groupAdmin = user.connectData[0]
+        let groupAdmin = user.userData[0]
         let groupAdminData = ConnectUserList()
         groupAdminData.userDescription.append(groupAdmin)
         groupDescription.descriptionGerman = "Gruppenname"

@@ -39,7 +39,7 @@ class SelectDataToShareTableViewController: UITableViewController {
         DispatchQueue.main.async {
             
             self.realm = self.realmHelper.iniRealm(syncUser: syncUser)
-            self.dataToShare = self.realmHelper.getUser(user: self.user).connectData
+            self.dataToShare = self.realmHelper.getUser(user: self.user).userData
             self.tableView.reloadData()
             
         }

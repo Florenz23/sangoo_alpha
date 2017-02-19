@@ -21,7 +21,7 @@ final class AuthData: Object {
 
 final class User: Object {
     dynamic var userId = UUID().uuidString
-    let connectData = List<ConnectData>()
+    let userData = List<ConnectData>()
     var geoData = List<GeoData>()
     
     override static func primaryKey() -> String? {
@@ -47,7 +47,7 @@ final class Message: Object {
     
     dynamic var messageText = ""
     var userData = List<ConnectData>()
-    
+    dynamic var messageTime = NSDate()
 }
 
 

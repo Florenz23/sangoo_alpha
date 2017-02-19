@@ -39,5 +39,17 @@ class LocalCookie {
         
     }
     
+    func check() -> Bool{
+        
+        let userId = getData()
+        if (userId.characters.count == 0){
+            print("nicht Eingeloggtt")
+            return false
+        }
+        return true
+    }
+    
+    
+    
     
 }

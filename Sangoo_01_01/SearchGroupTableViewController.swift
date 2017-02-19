@@ -23,12 +23,18 @@ class SearchGroupTableViewController: UITableViewController {
     var realmHelper = RealmHelper()
     var geoQueryResult = [GeoData]()
     var user = User()
+    let cookie = LocalCookie()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        if (!cookie.check()){
+            print("nicht Eingeloggtt")
+            goBackToLandingPage()
+        } else {
         setupRealm(syncUser: SyncUser.current!)
+        }
     }
     
     func setupUI() {
@@ -45,7 +51,6 @@ class SearchGroupTableViewController: UITableViewController {
                 self.realm = self.realmHelper.iniRealm(syncUser: syncUser)
                 let list = try! self.realm
                     .objects(GeoData.self)
-                    .filter("type", "restaurant")
                     .filterGeoRadius(center: self.mapView.centerCoordinate, radius: 500, sortAscending: nil)
                 self.geoQueryResult = list
                 self.tableView.reloadData()
@@ -85,4 +90,17 @@ class SearchGroupTableViewController: UITableViewController {
     }
     
     // MARK: Functions
+    
+    func goBackToLandingPage(){
+        
+        
+        let v = LandingPageTableViewController()
+        self.tabBarController?.tabBar.isHidden = false
+        v.tabBarController?.tabBar.isHidden = false
+        // hide Navigation Bar
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.pushViewController(v, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+        
+    }
 }

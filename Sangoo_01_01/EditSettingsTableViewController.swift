@@ -116,7 +116,7 @@ class EditSettingsTableViewController: UITableViewController {
         DispatchQueue.main.async {
             
             self.realm = self.realmHelper.iniRealm(syncUser: syncUser)
-            self.userData = self.realmHelper.getUser(user: self.user).connectData
+            self.userData = self.realmHelper.getUser(user: self.user).userData
             self.tableView.reloadData()
             
         }
