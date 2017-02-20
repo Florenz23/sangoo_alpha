@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import JSQMessagesViewController
+import UIKit
 import RealmSwift
 import MapKit
 import GeoQueries
-import JSQMessagesViewController
 
 class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     
@@ -29,7 +30,7 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
+        setupController()
         if (!cookie.check()){
             print("nicht Eingeloggtt")
             goBackToLandingPage()
@@ -49,16 +50,23 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
                 }
             }
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        //addMessage()
+        //collectionView.reloadData()
+    }
+    
+    
+    func setupController () {
+        
+        self.tabBarController?.tabBar.isHidden = true
         // Do any additional setup after loading the view, typically from a nib.
+        print("moin")
+        self.senderId = "1"
+        self.senderDisplayName = "DonaldTrump"
+        print(jsqMessages)
+        
     }
-    
-    
-    func addMessages() {
-        jsqMessages.append(JSQMessage(senderId: "1", displayName: "Jo",text:"moin"))
-        jsqMessages.append(JSQMessage(senderId: "2", displayName: "Ja",text:"heil"))
-        collectionView.reloadData()
-    }
-    
     
     func setupRealm(syncUser : SyncUser) {
         
@@ -71,9 +79,9 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
                 self.results = try! self.realm.findNearby(type: GeoData.self, origin: self.currentLocation!, radius: radius, sortAscending: true)
                 guard let r = self.results else { return }
                 self.messages = (r[0].connectList?.message)!
+                self.loadMessages()
                 self.groups = r
                 self.handleSearchResults()
-                //self.tableView.reloadData()
             }
             updateList()
             // Notify us when Realm changes
@@ -87,6 +95,16 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
         notificationToken.stop()
     }
     
+    
+    func loadMessages() {
+        jsqMessages = [JSQMessage]()
+        for message in messages {
+            jsqMessages.append(JSQMessage(senderId:"1", displayName: "Adolf",text:message.messageText))
+        }
+        collectionView.reloadData()
+    }
+    
+    // MARK: tableView
     func handleSearchResults() {
         if groups.count == 0 {
             self.connectGroup.createNewGroup(user: self.user, location: self.currentLocation!, realm: self.realm)
@@ -109,16 +127,24 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     }
     
     
-    // JSQMessenger
+    func addMessage() {
+        jsqMessages.append(JSQMessage(senderId:"1", displayName: "Adolf",text:"nön"))
+        jsqMessages.append(JSQMessage(senderId:"2", displayName: "Adolf",text:"haha"))
+        jsqMessages.append(JSQMessage(senderId:"3", displayName: "Adolf",text:"moin"))
+    }
+    
+    
+    //JSQController Setup
+    
+    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        let senderId = "1"
-        let senderDisplayName = "DonaldTrump"
         print("moin")
         print("\(text)")
         jsqMessages.append(JSQMessage(senderId:senderId, displayName: senderDisplayName,text:text))
         collectionView.reloadData()
-        print(messages)
+        print(jsqMessages)
     }
+    
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
         print("Accessory Button")
@@ -145,7 +171,7 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     // table View
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return messages.count
+        return jsqMessages.count
     }
     
     
@@ -153,8 +179,6 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         return cell
     }
-    
-    // goBack
     
     func goBackToLandingPage(){
         
@@ -170,5 +194,4 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     }
     
 }
-
 
