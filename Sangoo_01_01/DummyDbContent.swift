@@ -48,6 +48,8 @@ class DummyDbContent {
         trumpUser.userData.append(userDataPhone)
         let userDataEmail = createUserData(description: "Email",value: "Trump@maga.com")
         trumpUser.userData.append(userDataEmail)
+        let userDataId = createUserData(description: "UserId",value: trumpAuth.userId)
+        trumpUser.userData.append(userDataId)
         
         let userDataFirstName1 = createUserData(description: "Vorname",value: "Hillary")
         hillaryUser.userData.append(userDataFirstName1)
@@ -57,6 +59,8 @@ class DummyDbContent {
         hillaryUser.userData.append(userDataPhone1)
         let userDataEmail1 = createUserData(description: "Email",value: "hillary@war.com")
         hillaryUser.userData.append(userDataEmail1)
+        let userDataId1 = createUserData(description: "UserId",value: hillaryAuth.userId)
+        trumpUser.userData.append(userDataId1)
         
         // trumpsPulbicListConnectData
         let trumpGroupDescription = createUserData(description: "Gruppenname",value: "Maga")

@@ -20,7 +20,7 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     var realm: Realm!
     var realmHelper = RealmHelper()
     var results : [GeoData]?
-    var groups = [GeoData]()
+    var group : GeoData?
     var messages = List<Message>()
     var user = User()
     let cookie = LocalCookie()
@@ -74,14 +74,15 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
             
             self.realm = self.realmHelper.iniRealm(syncUser: syncUser)
             self.user = self.realmHelper.getUser(user: self.user)
+            self.senderId  = self.user.userId
             func updateList() {
                 let radius = 50.00 // 50m
                 self.results = try! self.realm.findNearby(type: GeoData.self, origin: self.currentLocation!, radius: radius, sortAscending: true)
                 guard let r = self.results else { return }
                 self.messages = (r[0].connectList?.message)!
                 self.loadMessages()
-                self.groups = r
-                self.handleSearchResults()
+                self.group = r[0]
+                self.handleSearchResults(groups: r)
             }
             updateList()
             // Notify us when Realm changes
@@ -99,13 +100,15 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     func loadMessages() {
         jsqMessages = [JSQMessage]()
         for message in messages {
-            jsqMessages.append(JSQMessage(senderId:"1", displayName: "Adolf",text:message.messageText))
+            let userIdResult = message.userData.filter("descriptionGerman == 'UserId'").first
+            let userId = userIdResult?.dataValue
+            jsqMessages.append(JSQMessage(senderId: userId, displayName: "Moin",text:message.messageText))
         }
         collectionView.reloadData()
     }
     
     // MARK: tableView
-    func handleSearchResults() {
+    func handleSearchResults(groups : [GeoData]) {
         if groups.count == 0 {
             self.connectGroup.createNewGroup(user: self.user, location: self.currentLocation!, realm: self.realm)
         } else {
@@ -116,12 +119,12 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     func checkIfUserIsGroupMember() {
         
         let userId = cookie.getData()
-        let group = self.groups[0]
-        let userIsMember = connectGroup.checkIfUserIsGroupMember(userId: userId , group: group)
+        let group = self.group
+        let userIsMember = connectGroup.checkIfUserIsGroupMember(userId: userId , group: group!)
         print(userId)
         print (userIsMember)
         if (!userIsMember) {
-            connectGroup.suscribeUserInGroup(user: self.user, group: group, realm: self.realm)
+            connectGroup.suscribeUserInGroup(user: self.user, group: group!, realm: self.realm)
         }
         
     }
@@ -140,9 +143,21 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         print("moin")
         print("\(text)")
-        jsqMessages.append(JSQMessage(senderId:senderId, displayName: senderDisplayName,text:text))
-        collectionView.reloadData()
-        print(jsqMessages)
+        //jsqMessages.append(JSQMessage(senderId:senderId, displayName: senderDisplayName,text:text))
+        //collectionView.reloadData()
+        //print(jsqMessages)
+        saveMessageInDb(text : text)
+    }
+    
+    func saveMessageInDb(text:String) {
+        
+        let newMessage = Message()
+        newMessage.messageText = text
+        newMessage.userData = self.user.userData
+        try! realm.write{
+            self.group?.connectList?.message.append(newMessage)
+        }
+        
     }
     
     
@@ -161,7 +176,7 @@ class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let bubblefactory = JSQMessagesBubbleImageFactory()
-        return bubblefactory!.outgoingMessagesBubbleImage(with: .black)
+        return bubblefactory!.outgoingMessagesBubbleImage(with: .blue)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {

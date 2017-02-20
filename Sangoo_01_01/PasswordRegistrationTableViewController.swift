@@ -52,6 +52,9 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
         let userData4 = ConnectData()
         userData4.descriptionGerman = "Telefonnummer"
         userData4.dataValue = userData.userPhone
+        let userData5 = ConnectData()
+        userData5.descriptionGerman = "UserId"
+        userData5.dataValue = authData.userId
         
         print(user)
         
@@ -62,6 +65,7 @@ class PasswordRegistrationTableViewController: UITableViewController,UITextField
             realm.add(userData2)
             realm.add(userData3)
             realm.add(userData4)
+            realm.add(userData5)
 
         }
     }
