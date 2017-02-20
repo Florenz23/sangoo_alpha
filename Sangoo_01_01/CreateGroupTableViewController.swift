@@ -80,8 +80,8 @@ class CreateGroupTableViewController: UITableViewController {
             let geoData = GeoData()
             let coordinates = self.locationManager.coordinates
             // todo Check if coordinates exist, sonst warten
-            geoData.longitudeKey = (coordinates?.longitude)!
-            geoData.latitudeKey = (coordinates?.latitude)!
+            geoData.lng = (coordinates?.longitude)!
+            geoData.lat = (coordinates?.latitude)!
             let connectListList = self.realmHelper.getConnectListList()
             try! self.realm.write {
                 self.user.geoData.append(geoData)
@@ -91,7 +91,20 @@ class CreateGroupTableViewController: UITableViewController {
     }
     
     func getLocationCoordinates() {
-        self.locationManager.getCurrentLocation()
+        self.locationManager.getCurrentLocation { (result) in
+            switch result
+            {
+            case .Success(let users):
+                print(users as Any)
+                print("got it")
+                /* work with users*/
+                break
+            case .Failure(let error):
+                /* present an error */
+                print(error as Any)
+                break
+            }
+        }
     }
     
     

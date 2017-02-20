@@ -16,11 +16,13 @@
 		C00771B11E410D1800BB5D47 /* UIRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00771B01E410D1800BB5D47 /* UIRegistration.swift */; };
 		C008DA8D1E4798C100D51D70 /* UISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C008DA8C1E4798C100D51D70 /* UISettings.swift */; };
 		C008DA8F1E47A81600D51D70 /* LocalCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C008DA8E1E47A81600D51D70 /* LocalCookie.swift */; };
+		C0094BF51E5A27AB002D10F7 /* ConnectGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0094BF41E5A27AB002D10F7 /* ConnectGroup.swift */; };
 		C00F87861E41EFBA0082E28E /* PhoneRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F87851E41EFBA0082E28E /* PhoneRegistrationTableViewController.swift */; };
 		C00F87881E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F87871E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift */; };
 		C00F878A1E41EFFB0082E28E /* PasswordRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F87891E41EFFB0082E28E /* PasswordRegistrationTableViewController.swift */; };
 		C00F878C1E41F1FA0082E28E /* EmailRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F878B1E41F1FA0082E28E /* EmailRegistrationTableViewController.swift */; };
 		C00F878E1E41F3C30082E28E /* DbClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F878D1E41F3C30082E28E /* DbClasses.swift */; };
+		C01C30BA1E5B24B000A9CC8E /* InstantGroupJSQMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01C30B91E5B24B000A9CC8E /* InstantGroupJSQMessagesViewController.swift */; };
 		C02169E31E3E2F6300BCA625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169E21E3E2F6300BCA625 /* AppDelegate.swift */; };
 		C02169EA1E3E2F6400BCA625 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02169E91E3E2F6400BCA625 /* Assets.xcassets */; };
 		C02169F51E3E33BE00BCA625 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02169F41E3E33BE00BCA625 /* CustomTabBarController.swift */; };
@@ -58,11 +60,13 @@
 		C00771B01E410D1800BB5D47 /* UIRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRegistration.swift; sourceTree = "<group>"; };
 		C008DA8C1E4798C100D51D70 /* UISettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISettings.swift; sourceTree = "<group>"; };
 		C008DA8E1E47A81600D51D70 /* LocalCookie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCookie.swift; sourceTree = "<group>"; };
+		C0094BF41E5A27AB002D10F7 /* ConnectGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectGroup.swift; sourceTree = "<group>"; };
 		C00F87851E41EFBA0082E28E /* PhoneRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C00F87871E41EFDF0082E28E /* UsernameRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C00F87891E41EFFB0082E28E /* PasswordRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C00F878B1E41F1FA0082E28E /* EmailRegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		C00F878D1E41F3C30082E28E /* DbClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbClasses.swift; sourceTree = "<group>"; };
+		C01C30B91E5B24B000A9CC8E /* InstantGroupJSQMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantGroupJSQMessagesViewController.swift; sourceTree = "<group>"; };
 		C02169DF1E3E2F6300BCA625 /* Sangoo_01_01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sangoo_01_01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02169E21E3E2F6300BCA625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C02169E91E3E2F6400BCA625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -200,8 +204,8 @@
 		C03D3F141E40E746005F5E76 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */,
 				C00F878D1E41F3C30082E28E /* DbClasses.swift */,
+				C0A59C6F1E407E9D00D41669 /* MessengerClass.swift */,
 				C00771B01E410D1800BB5D47 /* UIRegistration.swift */,
 				C03300A51E44DE0000526F7E /* LoadingAnimation.swift */,
 				C008DA8C1E4798C100D51D70 /* UISettings.swift */,
@@ -213,6 +217,7 @@
 				C0C8C76B1E4C760700B6BDD9 /* DummyDbContent.swift */,
 				C0C8C76D1E4CBC3400B6BDD9 /* RegistrationUserData.swift */,
 				C0FAC67D1E537E10000AD55A /* LocationManager.swift */,
+				C0094BF41E5A27AB002D10F7 /* ConnectGroup.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				C05AFCAB1E51E62B007E4974 /* CreateGroupTableViewController.swift */,
 				C05AFCB01E52140F007E4974 /* SearchGroupTableViewController.swift */,
 				C0CCC3701E52587A0042BFBF /* SelectDataToShareTableViewController.swift */,
+				C01C30B91E5B24B000A9CC8E /* InstantGroupJSQMessagesViewController.swift */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -386,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0094BF51E5A27AB002D10F7 /* ConnectGroup.swift in Sources */,
 				C0034FC61E49D9A900C5CEC3 /* Constants.swift in Sources */,
 				C03D3F0F1E40DEC1005F5E76 /* FirstNameRegistrationTableViewController.swift in Sources */,
 				C02169FB1E3E379800BCA625 /* SettingsTableViewController.swift in Sources */,
@@ -419,6 +426,7 @@
 				C0C8C76E1E4CBC3400B6BDD9 /* RegistrationUserData.swift in Sources */,
 				C0034FC41E49BA9400C5CEC3 /* DbConnector.swift in Sources */,
 				C00771AD1E4105F000BB5D47 /* LastNameRegistrationTableViewController.swift in Sources */,
+				C01C30BA1E5B24B000A9CC8E /* InstantGroupJSQMessagesViewController.swift in Sources */,
 				C00F87861E41EFBA0082E28E /* PhoneRegistrationTableViewController.swift in Sources */,
 				C0C8C76C1E4C760700B6BDD9 /* DummyDbContent.swift in Sources */,
 			);

@@ -17,9 +17,5 @@ class EntranceNavigationController: UINavigationController {
                
         
         //setup login
-        
-        
     }
-    
-    
 }

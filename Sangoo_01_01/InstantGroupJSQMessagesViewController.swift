@@ -1,8 +1,8 @@
 //
-//  ContactTableViewController.swift
-//  Sangoo_01_01
+//  ViewController.swift
+//  UIChat
 //
-//  Created by Florenz Erstling on 29.01.17.
+//  Created by Florenz Erstling on 14.02.17.
 //  Copyright © 2017 Florenz. All rights reserved.
 //
 
@@ -10,11 +10,11 @@ import UIKit
 import RealmSwift
 import MapKit
 import GeoQueries
+import JSQMessagesViewController
 
-
-class SearchGroupTableViewController: UITableViewController {
+class InstantGroupJSQMessagesViewController: JSQMessagesViewController {
     
-    // MARK: Model
+    var jsqMessages = [JSQMessage]()
     var notificationToken: NotificationToken!
     var realm: Realm!
     var realmHelper = RealmHelper()
@@ -27,14 +27,13 @@ class SearchGroupTableViewController: UITableViewController {
     var currentLocation : CLLocationCoordinate2D?
     let connectGroup = ConnectGroup()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupUI()
+        self.tabBarController?.tabBar.isHidden = true
         if (!cookie.check()){
             print("nicht Eingeloggtt")
             goBackToLandingPage()
-
+            
         } else {
             self.locationManager.getCurrentLocation { (result) in
                 switch result
@@ -50,12 +49,15 @@ class SearchGroupTableViewController: UITableViewController {
                 }
             }
         }
+        // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func setupUI() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
     
+    func addMessages() {
+        jsqMessages.append(JSQMessage(senderId: "1", displayName: "Jo",text:"moin"))
+        jsqMessages.append(JSQMessage(senderId: "2", displayName: "Ja",text:"heil"))
+        collectionView.reloadData()
+    }
     
     
     func setupRealm(syncUser : SyncUser) {
@@ -71,7 +73,7 @@ class SearchGroupTableViewController: UITableViewController {
                 self.messages = (r[0].connectList?.message)!
                 self.groups = r
                 self.handleSearchResults()
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
             }
             updateList()
             // Notify us when Realm changes
@@ -85,13 +87,11 @@ class SearchGroupTableViewController: UITableViewController {
         notificationToken.stop()
     }
     
-    
-    // MARK: tableView
     func handleSearchResults() {
         if groups.count == 0 {
             self.connectGroup.createNewGroup(user: self.user, location: self.currentLocation!, realm: self.realm)
         } else {
-           self.checkIfUserIsGroupMember()
+            self.checkIfUserIsGroupMember()
         }
     }
     
@@ -109,24 +109,52 @@ class SearchGroupTableViewController: UITableViewController {
     }
     
     
-    override func tableView(_ tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
+    // JSQMessenger
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        let senderId = "1"
+        let senderDisplayName = "DonaldTrump"
+        print("moin")
+        print("\(text)")
+        jsqMessages.append(JSQMessage(senderId:senderId, displayName: senderDisplayName,text:text))
+        collectionView.reloadData()
+        print(messages)
+    }
+    
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        print("Accessory Button")
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        return jsqMessages[indexPath.item]
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let bubblefactory = JSQMessagesBubbleImageFactory()
+        return bubblefactory!.outgoingMessagesBubbleImage(with: .black)
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return nil
+    }
+    
+    // table View
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
-//    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        //let item = results?[indexPath.row]
-        let item = messages[indexPath.row]
-        cell.textLabel?.text = item.messageText
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         return cell
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    // MARK: Functions
+    // goBack
     
     func goBackToLandingPage(){
         
@@ -140,4 +168,7 @@ class SearchGroupTableViewController: UITableViewController {
         self.tabBarController?.tabBar.isHidden = true
         
     }
+    
 }
+
+

@@ -31,8 +31,8 @@ final class User: Object {
 
 final class GeoData: Object {
     dynamic var connectList : ConnectList?
-    dynamic var latitudeKey : Double = 0
-    dynamic var longitudeKey : Double = 0
+    dynamic var lat: Double = 37.33233141
+    dynamic var lng: Double = -122.0312186
     dynamic var updateTime = NSDate()
 }
 
@@ -46,8 +46,11 @@ final class ConnectList: Object {
 final class Message: Object {
     
     dynamic var messageText = ""
+    //https://realm.io/docs/swift/latest/
+    //let owners = LinkingObjects(fromType: Person.self, property: "dogs")
     var userData = List<ConnectData>()
     dynamic var messageTime = NSDate()
+ 
 }
 
 
