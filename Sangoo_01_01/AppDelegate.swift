@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -6,12 +7,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
         if configureDefaultRealm() {
-            print("jo")
+            createDummy()
+            print("User already authed")
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = CustomTabBarController()
             window?.makeKeyAndVisible()
         } else {
-            window?.rootViewController = LandingPageTableViewController()
+            print("First Login")
+            window?.rootViewController = CustomTabBarController()
             window?.makeKeyAndVisible()
             logIn(animated: false)
         }
@@ -29,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
+    func createDummy() {
+        checkIfRealmIsEmpty()
+    }
+    
     func logIn(animated: Bool = true) {
         let username = "test@gmx.de"  // <--- Update this
         let password = "asdfasdf"  // <--- Update this
@@ -42,22 +49,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         authenticate(username: username, password: password, register: false) { error in
             if let error = error {
                 self.present(error: error)
+                print("Login error")
+                print(error)
             } else {
-                self.window?.rootViewController = CustomTabBarController()
+                
+                self.window?.rootViewController = LandingPageTableViewController()
             }
         }
-
-        window?.rootViewController?.present(LandingPageTableViewController(), animated: false, completion: nil)
+        //window?.rootViewController?.present(LandingPageTableViewController(), animated: false, completion: nil)
     }
     
     func present(error: NSError) {
-        let alertController = UIAlertController(title: error.localizedDescription,
-                                                message: error.localizedFailureReason ?? "",
-                                                preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Try Again", style: .default) { _ in
-            self.logIn()
-        })
-        window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        print(error)
+        print("Fehler beim anmelden")
+//        let alertController = UIAlertController(title: error.localizedDescription,
+//                                                message: error.localizedFailureReason ?? "",
+//                                                preferredStyle: .alert)
+//        alertController.addAction(UIAlertAction(title: "Try Again", style: .default) { _ in
+//            self.logIn()
+//        })
+        window?.rootViewController?.present(CustomTabBarController(), animated: true, completion: nil)
     }
 
 }

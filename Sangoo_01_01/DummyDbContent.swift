@@ -123,7 +123,6 @@ class DummyDbContent {
     func createUserData(description : String, value : String) -> ConnectData {
         
         let userData = ConnectData()
-        print(userData)
         userData.descriptionGerman = description
         userData.dataValue = value
         return userData

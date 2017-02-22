@@ -22,8 +22,10 @@ private func setDefaultRealmConfiguration(with user: SyncUser) {
     )
     let realm = try! Realm()
     
-    if realm.isEmpty {
+ //   if realm.isEmpty {
+    if checkIfRealmIsEmpty() {
         try! realm.write {
+            print("create Dummy")
             let dummyContent = DummyDbContent()
             dummyContent.iniAuth()
             dummyContent.iniUser()
@@ -58,12 +60,32 @@ private func setDefaultRealmConfiguration(with user: SyncUser) {
     }
 }
 
+func checkIfRealmIsEmpty() -> Bool {
+    var isEmpty = true
+    DispatchQueue.main.async {
+        var authData : AuthData?
+        print("check AuthData")
+        if realm != nil, let list = realm.objects(AuthData.self).first {
+            authData = list
+        }
+        print(authData)
+        if authData != nil {
+            print(authData)
+            if let user = SyncUser.current {
+                setDefaultRealmConfiguration(with: user)
+            }
+        }
+    }
+    print(isEmpty)
+    return isEmpty
+}
+
 // Internal Functions
 
 // returns true on success
 func configureDefaultRealm() -> Bool {
     if let user = SyncUser.current {
-        setDefaultRealmConfiguration(with: user)
+        //setDefaultRealmConfiguration(with: user)
         return true
     }
     return false
