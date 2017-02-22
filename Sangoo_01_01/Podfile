@@ -1,0 +1,14 @@
+use_frameworks!
+platform :ios, '9.0'
+project '../Sangoo_01_01.xcodeproj'
+target 'Sangoo_01_01' do
+  pod 'RealmSwift', '~> 2.4'
+  pod 'SkyFloatingLabelTextField', '~> 2.0.0'
+  pod 'SwiftMessages', '~> 3.1'
+  pod 'JSQMessagesViewController', '~> 7.3'
+  pod 'RealmGeoQueries', '~> 1.2'
+  pod 'RxSwift',    '~> 3.0'
+  pod 'RxCocoa',    '~> 3.0'
+  pod 'SwiftLocation', '~> 1.1'
+
+end
